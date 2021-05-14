@@ -32,5 +32,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/spongepowered.zip"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/1.8.9decomp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GandyClient/lib/launchwrapper-1.12.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

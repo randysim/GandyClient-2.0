@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "gandyclient.mixins",
+  "refmap": "mixins.gandyclient.refmap.json",
+  "verbose": true,
+  "mixins": []
+}
