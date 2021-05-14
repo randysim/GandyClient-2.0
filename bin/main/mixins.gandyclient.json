@@ -1,10 +1,11 @@
 {
   "required": true,
   "compatibilityLevel": "JAVA_8",
-  "package": "gandyclient.mixins",
+  "package": "GandyClient.mixins",
   "refmap": "mixin.gandyclient.refmap.json",
   "verbose": true,
   "mixins": [
-	"client.MinecraftMixin"
+	"client.MinecraftMixin",
+	"client.gui.GuiMainMenuMixin
    ]
 }
