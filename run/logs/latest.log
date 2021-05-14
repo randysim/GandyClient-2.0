@@ -1,0 +1,27 @@
+[16:38:43] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
+[16:38:43] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
+[16:38:43] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
+[16:38:43] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
+[16:38:43] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
+[16:38:43] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
+[16:38:43] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
+[16:38:43] [main/INFO]: Compatibility level set to JAVA_8
+[16:38:43] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
+[16:38:43] [main/INFO]: Loading tweak class name org.spongepowered.asm.mixin.EnvironmentStateTweaker
+[16:38:43] [main/INFO]: Calling tweak class org.spongepowered.asm.mixin.EnvironmentStateTweaker
+[16:38:43] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
+[16:38:43] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[16:38:43] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
+[16:38:45] [Client thread/INFO]: Setting user: Player766
+[16:38:45] [Client thread/INFO]: (Session ID is token:FML:Player766)
+[16:38:46] [Client thread/INFO]: LWJGL Version: 2.9.4
+[16:38:46] [Client thread/INFO]: Reloading ResourceManager: Default
+[16:38:47] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[16:38:47] [Thread-7/INFO]: Initializing LWJGL OpenAL
+[16:38:47] [Thread-7/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[16:38:47] [Thread-7/INFO]: OpenAL initialized.
+[16:38:47] [Sound Library Loader/INFO]: Sound engine started
+[16:38:48] [Client thread/INFO]: Created: 512x512 textures-atlas
+[16:39:32] [Client thread/INFO]: Stopping!
+[16:39:32] [Client thread/INFO]: SoundSystem shutting down...
+[16:39:32] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

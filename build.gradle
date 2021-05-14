@@ -38,7 +38,7 @@ minecraft {
     tweakClass = "GandyClient.launch.GandyClientTweaker"
     mappings = "stable_22"
     runDir = 'run'
-    clientJvmArgs = ["-XX:-DisableExplicitGC"] // fast world loading
+    clientJvmArgs = ["-XX:-DisableExplicitGC"]
     makeObfSourceJar = false
 }
 

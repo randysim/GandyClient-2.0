@@ -13,9 +13,17 @@ import net.minecraft.launchwrapper.LaunchClassLoader;
 
 public class GandyClientTweaker implements ITweaker {
 	
+	public static GandyClientTweaker INSTANCE;
+	
 	private ArrayList<String> gameArgs = new ArrayList<>();
+	
+	public GandyClientTweaker() {
+		System.out.println("INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER.");
+        INSTANCE = this;
+    }
 
-	@Override
+	
+	@Override	
 	public void acceptOptions(List<String> args, File gameFolder, File assetsFolder, String profile) {
 		// TODO Auto-generated method stub
 		this.gameArgs.addAll(args);
@@ -27,7 +35,7 @@ public class GandyClientTweaker implements ITweaker {
 	@Override
 	public String[] getLaunchArguments() {
 		// TODO Auto-generated method stub
-		return (String[]) gameArgs.toArray();
+		return gameArgs.toArray(new String[]{});
 	}
 
 	@Override
@@ -39,6 +47,7 @@ public class GandyClientTweaker implements ITweaker {
 	@Override
 	public void injectIntoClassLoader(LaunchClassLoader classLoader) {
 		// TODO Auto-generated method stub
+		System.out.println("INJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT");
 		MixinBootstrap.init();
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.gandyclient.json");
