@@ -33,8 +33,11 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
 	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/spongepowered.zip"/>
-	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/1.8.9decomp.jar"/>
-	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GandyClient/lib/launchwrapper-1.12.jar"/>
 	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/discord-rpc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/launchwrapper-of-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/slick.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/1.8.9decomp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/lwjgl-2.9.4-nightly-20150209.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

@@ -12,7 +12,7 @@ import net.minecraft.client.gui.GuiMainMenu;
 public abstract class GuiMainMenuMixin {
 	@Inject(method = "initGui", at = @At("HEAD"))
 	private void init (CallbackInfo info) {
-		System.out.println("Mixin Gui Init Injected");
+
 		Client.getInstance().getRichPresence().update("Idle", "Main Menu");
 	}
 }

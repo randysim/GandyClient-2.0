@@ -8,6 +8,7 @@ import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
+import net.minecraft.launchwrapper.Launch;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
@@ -18,7 +19,6 @@ public class GandyClientTweaker implements ITweaker {
 	private ArrayList<String> gameArgs = new ArrayList<>();
 	
 	public GandyClientTweaker() {
-		System.out.println("INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER. INTIALIZING LAUNCH TWEAKER.");
         INSTANCE = this;
     }
 
@@ -47,7 +47,6 @@ public class GandyClientTweaker implements ITweaker {
 	@Override
 	public void injectIntoClassLoader(LaunchClassLoader classLoader) {
 		// TODO Auto-generated method stub
-		System.out.println("INJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT\nINJECTING CLASSES INTO MINECRAFT");
 		MixinBootstrap.init();
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.gandyclient.json");

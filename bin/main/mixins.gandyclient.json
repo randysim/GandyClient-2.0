@@ -6,6 +6,6 @@
   "verbose": true,
   "mixins": [
 	"client.MinecraftMixin",
-	"client.gui.GuiMainMenuMixin
+	"client.gui.GuiMainMenuMixin"
    ]
 }

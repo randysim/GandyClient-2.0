@@ -55,7 +55,6 @@ dependencies {
 }
 
 mixin {
-    // Specify "notch" or "searge" here
     defaultObfuscationEnv notch
     add sourceSets.main, "mixin.gandyclient.refmap.json"
 }

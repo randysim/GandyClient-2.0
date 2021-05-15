@@ -12,7 +12,7 @@ import net.minecraft.client.Minecraft;
 public abstract class MinecraftMixin {
 	@Inject(method = "startGame", at = @At("HEAD"))
     private void init(CallbackInfo info) {
-		System.out.println("Mixin Injected Init");
+
         Client.getInstance().init();
     }
 	
