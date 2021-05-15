@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import GandyClient.Client;
+import GandyClient.events.impl.ClientTickEvent;
 import net.minecraft.client.Minecraft;
 
 @Mixin(Minecraft.class)
@@ -19,5 +20,10 @@ public abstract class MinecraftMixin {
 	@Inject(method = "startGame", at = @At("RETURN"))
 	private void start (CallbackInfo info) {
 		Client.getInstance().start();
+	}
+	
+	@Inject(method = "runTick", at = @At("RETURN"))
+	private void runTick (CallbackInfo info) {
+		new ClientTickEvent().call();
 	}
 }

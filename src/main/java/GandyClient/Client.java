@@ -47,6 +47,7 @@ public class Client {
 	
 	public void shutdown () {
 		// client shutdown
+		RichPresence.shutdown();
 	}
 	
 	public GandyClientRP getRichPresence () {

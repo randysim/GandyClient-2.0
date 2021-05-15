@@ -7,6 +7,6 @@
   "mixins": [
 	"client.MinecraftMixin",
 	"client.gui.GuiMainMenuMixin",
-	"client.settings.GameSettingsMixin"
+	"client.gui.GuiNewChatMixin"
    ]
 }
