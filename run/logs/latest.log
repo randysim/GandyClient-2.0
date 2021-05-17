@@ -1,29 +1,29 @@
-[17:29:42] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
-[17:29:42] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
-[17:29:42] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
-[17:29:42] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
-[17:29:42] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
-[17:29:42] [main/ERROR]: Initialising mixin subsystem after game pre-init phase! Some mixins may be skipped.
-[17:29:42] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
-[17:29:42] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
-[17:29:42] [main/INFO]: Compatibility level set to JAVA_8
-[17:29:42] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
-[17:29:42] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
-[17:29:43] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
-[17:29:43] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
-[17:29:43] [main/INFO]: Mixing client.gui.GuiMainMenuMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiMainMenu
-[17:29:45] [Client thread/INFO]: Setting user: Player406
-[17:29:45] [Client thread/INFO]: (Session ID is token:FML:Player406)
-[17:29:45] [Client thread/INFO]: LWJGL Version: 2.9.4
-[17:29:46] [Client thread/INFO]: Reloading ResourceManager: Default
-[17:29:46] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[17:29:47] [Thread-7/INFO]: Initializing LWJGL OpenAL
-[17:29:47] [Thread-7/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[17:29:47] [Thread-7/INFO]: OpenAL initialized.
-[17:29:47] [Sound Library Loader/INFO]: Sound engine started
-[17:29:48] [Client thread/INFO]: Created: 512x512 textures-atlas
-[17:29:48] [Client thread/INFO]: Mixing client.renderer.EntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
-[17:29:48] [Client thread/INFO]: Mixing client.gui.GuiNewChatMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiNewChat
-[17:29:55] [Client thread/INFO]: Stopping!
-[17:29:55] [Client thread/INFO]: SoundSystem shutting down...
-[17:29:56] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[14:06:10] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
+[14:06:10] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
+[14:06:10] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
+[14:06:10] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
+[14:06:10] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
+[14:06:10] [main/ERROR]: Initialising mixin subsystem after game pre-init phase! Some mixins may be skipped.
+[14:06:10] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
+[14:06:10] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
+[14:06:10] [main/INFO]: Compatibility level set to JAVA_8
+[14:06:10] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
+[14:06:10] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
+[14:06:10] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[14:06:10] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
+[14:06:10] [main/INFO]: Mixing client.gui.GuiMainMenuMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiMainMenu
+[14:06:12] [Client thread/INFO]: Setting user: Player93
+[14:06:12] [Client thread/INFO]: (Session ID is token:FML:Player93)
+[14:06:13] [Client thread/INFO]: LWJGL Version: 2.9.4
+[14:06:14] [Client thread/INFO]: Reloading ResourceManager: Default
+[14:06:15] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[14:06:15] [Thread-7/INFO]: Initializing LWJGL OpenAL
+[14:06:15] [Thread-7/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[14:06:15] [Thread-7/INFO]: OpenAL initialized.
+[14:06:15] [Sound Library Loader/INFO]: Sound engine started
+[14:06:16] [Client thread/INFO]: Created: 512x512 textures-atlas
+[14:06:16] [Client thread/INFO]: Mixing client.renderer.EntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
+[14:06:16] [Client thread/INFO]: Mixing client.gui.GuiNewChatMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiNewChat
+[14:06:19] [Client thread/INFO]: Stopping!
+[14:06:19] [Client thread/INFO]: SoundSystem shutting down...
+[14:06:19] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

@@ -11,9 +11,8 @@ import net.minecraft.client.renderer.EntityRenderer;
 @Mixin(EntityRenderer.class)
 public abstract class EntityRendererMixin {
 	
-	@Inject(method = "func_181560_a", at = @At("RETURN"))
-	private void onRenderReturn (CallbackInfo ci) {
-
+	@Inject(method = "renderWorld", at = @At("RETURN"))
+	private void onRenderReturn (CallbackInfo info) {
 		new RenderEvent().call();
 	}
 }

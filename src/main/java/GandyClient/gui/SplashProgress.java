@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class SplashProgress {
 	
-	private static final int MAX = 7;
+	private static final int MAX = 5;
 	private static int PROGRESS = 0;
 	private static String CURRENT = "";
 	private static ResourceLocation splash;
@@ -51,7 +51,7 @@ public class SplashProgress {
 		GlStateManager.enableTexture2D();
 		
 		if (splash == null) {
-			splash = new ResourceLocation("assets/splash.png");
+			splash = new ResourceLocation("splash.png");
 		}
 		
 		tm.bindTexture(splash);
