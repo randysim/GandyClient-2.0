@@ -8,6 +8,7 @@
 	"client.MinecraftMixin",
 	"client.gui.GuiMainMenuMixin",
 	"client.gui.GuiNewChatMixin",
-	"client.renderer.EntityRendererMixin"
+	"client.renderer.EntityRendererMixin",
+	"client.settings.GameSettingsMixin"
    ]
 }

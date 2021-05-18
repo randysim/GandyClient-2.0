@@ -82,19 +82,14 @@ public class SplashProgress {
 		double calc = (nProgress/MAX) * sr.getScaledWidth();
 		
 		Gui.drawRect(0, sr.getScaledHeight() - 35, sr.getScaledWidth(), sr.getScaledHeight(), new Color(0, 0, 0, 50).getRGB());
-		GlStateManager.resetColor();
-		resetTextureState();
+		
+
 		UFR.drawString(CURRENT, 20, sr.getScaledHeight() - 25, 0xFFFFFFFF);
 		
 		String step = PROGRESS + "/" + MAX;
 		UFR.drawString(step, sr.getScaledWidth() - 20 - UFR.getStringWidth(step), sr.getScaledHeight() - 25, 0xe1e1e1FF);
-		GlStateManager.resetColor();
-		resetTextureState();
+
 		Gui.drawRect(0, sr.getScaledHeight() - 2, (int) calc, sr.getScaledHeight(), new Color(149, 201, 144).getRGB());
 		Gui.drawRect(0, sr.getScaledHeight()-2, sr.getScaledWidth(), sr.getScaledHeight(), new Color(0, 0, 0, 10).getRGB());
-	}
-	
-	private static void resetTextureState () {
-		GlStateManager.bindTexture(-1);
 	}
 }
