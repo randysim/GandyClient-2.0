@@ -5,10 +5,12 @@ import GandyClient.events.EventTarget;
 import GandyClient.events.impl.ClientTickEvent;
 import GandyClient.gui.SplashProgress;
 import GandyClient.gui.hud.HUDManager;
+import GandyClient.gui.modmenu.ModEscape;
 import GandyClient.modules.ModInstances;
 import GandyClient.modules.ModuleManager;
 import GandyClient.utils.Keybinds;
 import GandyClient.utils.Multithreading;
+import net.minecraft.client.Minecraft;
 
 public class Client {
 	private static final Client INSTANCE = new Client();
@@ -62,9 +64,7 @@ public class Client {
 	public void onTick (ClientTickEvent e) {
 		// add CLIENT_GUI_MOD_POS with mixins
 		if (Keybinds.CLIENT_GUI_MOD_POS.isPressed()) {
-			
-			//modManager.openModMenu();
-			//hudManager.openConfigScreen();
+			Minecraft.getMinecraft().displayGuiScreen(new ModEscape());
 		}
 	}
 }

@@ -3,6 +3,7 @@ package GandyClient.launch;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
@@ -18,6 +19,10 @@ public class GandyClientTweaker implements ITweaker {
 	public static GandyClientTweaker INSTANCE;
 	
 	private ArrayList<String> gameArgs = new ArrayList<>();
+	
+	// skid moment
+	private boolean isRunningOptifine = Launch.classLoader.getTransformers().stream()
+	        .anyMatch(p -> p.getClass().getName().toLowerCase(Locale.ENGLISH).contains("optifine"));
 	
 	public GandyClientTweaker() {
         INSTANCE = this;
@@ -36,7 +41,7 @@ public class GandyClientTweaker implements ITweaker {
 	@Override
 	public String[] getLaunchArguments() {
 		// TODO Auto-generated method stub
-		return gameArgs.toArray(new String[]{});
+		return isRunningOptifine ? new String[0] : gameArgs.toArray(new String[]{});
 	}
 
 	@Override
@@ -53,8 +58,13 @@ public class GandyClientTweaker implements ITweaker {
 		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.gandyclient.json");
         
-        if (environment.getObfuscationContext() == null) 
-        	environment.setObfuscationContext("notch");
+        if (isRunningOptifine) {
+            environment.setObfuscationContext("notch"); 
+        }
+
+        if (environment.getObfuscationContext() == null) {
+            environment.setObfuscationContext("notch"); 
+        }
         
         environment.setSide(MixinEnvironment.Side.CLIENT);
 	}
@@ -70,5 +80,8 @@ public class GandyClientTweaker implements ITweaker {
 	        }
 	        
 	 }
-
+	 
+	 public boolean isUsingOptifine() {
+	        return isRunningOptifine;
+	 }
 }

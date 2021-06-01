@@ -25,8 +25,8 @@ public class ScreenPosition {
 		ScaledResolution res = new ScaledResolution(mc);
 		
 		// scales it down so it's the same no matter what screensize
-		this.x = (double) (x/res.getScaledWidth());
-		this.y = (double) (y/res.getScaledHeight());
+		this.x = (double) x / res.getScaledWidth();
+		this.y = (double) y / res.getScaledHeight();
 	}
 	
 	public void setRelative (double x, double y) {

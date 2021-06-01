@@ -6,10 +6,11 @@ import java.util.Set;
 
 import com.google.common.collect.Sets;
 
+import GandyClient.Constants;
 import GandyClient.events.EventManager;
 import GandyClient.events.EventTarget;
 import GandyClient.events.impl.RenderEvent;
-import GandyClient.Constants;
+import GandyClient.modules.ModDraggable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiChat;
 import net.minecraft.client.gui.ScaledResolution;
@@ -33,26 +34,26 @@ public class HUDManager {
 		return instance;
 	}
 	
-	private Set<IRenderer> registeredRenderers = Sets.newHashSet();
+	private Set<ModDraggable> registeredRenderers = Sets.newHashSet();
 	private Minecraft mc = Minecraft.getMinecraft();
 	
-	public void register(IRenderer... renderers) {
-		for (IRenderer render : renderers) {
+	public void register(ModDraggable... renderers) {
+		for (ModDraggable render : renderers) {
 			this.registeredRenderers.add(render);
 		}
 	}
 	
-	public void unregister (IRenderer... renderers) {
-		for (IRenderer render : renderers) {
+	public void unregister (ModDraggable... renderers) {
+		for (ModDraggable render : renderers) {
 			this.registeredRenderers.remove(render);
 		}
 	}
 	
-	public boolean has (IRenderer renderer) {
+	public boolean has (ModDraggable renderer) {
 		return this.registeredRenderers.contains(renderer);
 	}
 	
-	public Collection<IRenderer> getRegisteredRenderers () {
+	public Collection<ModDraggable> getRegisteredRenderers () {
 		return Sets.newHashSet(registeredRenderers);
 	}
 	
@@ -63,13 +64,13 @@ public class HUDManager {
 	@EventTarget
 	public void onRender (RenderEvent e) {
 		if (mc.currentScreen == null || mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof GuiChat) {
-			for (IRenderer renderer : registeredRenderers) {
+			for (ModDraggable renderer : registeredRenderers) {
 				callRenderer(renderer);
 			}
 		}
 	}
 	
-	private void adjustBounds (IRenderer renderer, ScreenPosition pos) {
+	private void adjustBounds (ModDraggable renderer, ScreenPosition pos) {
 		ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
 		int screenWidth = res.getScaledWidth();
 		int screenHeight = res.getScaledHeight();
@@ -80,10 +81,9 @@ public class HUDManager {
 		pos.setAbsolute(absoluteX, absoluteY);
 	}
 
-	private void callRenderer(IRenderer renderer) {
-		if (!renderer.isEnabled()) return;
+	private void callRenderer(ModDraggable renderer) {
 		ScreenPosition pos = renderer.load();
-		
+
 		if (pos == null) {
 				pos = ScreenPosition.fromRelativePosition(0.5, 0.5);
 		}
@@ -123,6 +123,6 @@ public class HUDManager {
 			adjustBounds(renderer, pos);
 			renderer.render(pos);
 		}
-		
+
 	}
 }

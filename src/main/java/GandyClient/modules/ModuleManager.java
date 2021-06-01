@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 
 import GandyClient.events.EventManager;
 import GandyClient.gui.hud.HUDManager;
+import GandyClient.gui.modmenu.ModMenuScreen;
 import net.minecraft.client.Minecraft;
 
 public class ModuleManager {
@@ -25,7 +26,10 @@ public class ModuleManager {
 	private Set<ModDraggable> registeredMods = Sets.newHashSet();
 	
 	public void register (ModDraggable mod) {
-		if (!registeredMods.contains(mod)) registeredMods.add(mod);
+			this.registeredMods.add(mod);
+			if (mod.getSettings().getSettings().get("ENABLED") == 1) {
+				this.enable(mod);
+			}
 	}
 	
 	public Set<ModDraggable> getRegisteredMods () {
@@ -33,17 +37,23 @@ public class ModuleManager {
 	}
 	
 	public void enable (ModDraggable mod) {
-		if (mod.isEnabled()) return;
-		mod.setEnabled(true);
-		// add to hud manager
-		HUDManager.getInstance().register(mod);
-		// update settings
+		if (this.registeredMods.contains(mod)) HUDManager.getInstance().register(mod);
+		mod.getSettings().updateSetting("ENABLED", 1);
 	}
 	public void disable (ModDraggable mod) {
-		if (!mod.isEnabled()) return;
-		mod.setEnabled(false);
-		// remove from hud manager
-		HUDManager.getInstance().unregister(mod);
-		// update settings
+		if (this.registeredMods.contains(mod)) {
+			HUDManager.getInstance().unregister(mod);
+			
+			mod.getSettings().updateSetting("ENABLED", 0);
+			
+			// fullbright logic
+			if (mod.getDisplayName().equalsIgnoreCase("Fullbright")) {
+				mc.gameSettings.gammaSetting = 0f;
+			}
+		};
+	}
+	
+	public void openModMenu () {
+		mc.displayGuiScreen(new ModMenuScreen(this));
 	}
 }

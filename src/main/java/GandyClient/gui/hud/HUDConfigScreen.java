@@ -9,22 +9,23 @@ import java.util.function.Predicate;
 import org.lwjgl.input.Keyboard;
 
 import GandyClient.Constants;
+import GandyClient.modules.ModDraggable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 
 public class HUDConfigScreen extends GuiScreen {
-	private final HashMap<IRenderer, ScreenPosition> renderers = new HashMap<IRenderer, ScreenPosition>();
+	private final HashMap<ModDraggable, ScreenPosition> renderers = new HashMap<ModDraggable, ScreenPosition>();
 	
-	private Optional<IRenderer> selectedRenderer = Optional.empty();
+	private Optional<ModDraggable> selectedRenderer = Optional.empty();
 	
 	private int prevX, prevY;
 	
 	public HUDConfigScreen (HUDManager api) {
-		Collection<IRenderer> registeredRenderers = api.getRegisteredRenderers();
+		Collection<ModDraggable> registeredRenderers = api.getRegisteredRenderers();
 		
-		for (IRenderer render : registeredRenderers) {
+		for (ModDraggable render : registeredRenderers) {
 			if (!render.isEnabled()) continue;
 			
 			ScreenPosition pos = render.load();
@@ -187,7 +188,7 @@ public class HUDConfigScreen extends GuiScreen {
 		this.selectedRenderer = renderers.keySet().stream().filter(new MouseOverFinder(x, y)).findFirst();
 	}
 	
-	private class MouseOverFinder implements Predicate<IRenderer> {
+	private class MouseOverFinder implements Predicate<ModDraggable> {
 		
 		private int mouseX, mouseY;
 		
@@ -197,7 +198,7 @@ public class HUDConfigScreen extends GuiScreen {
 		}
 		
 		@Override
-		public boolean test(IRenderer renderer) {	
+		public boolean test(ModDraggable renderer) {	
 			int guiScale = mc.gameSettings.guiScale;
 			double scaleFactor = 1;
 			
