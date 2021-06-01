@@ -85,7 +85,7 @@ public class HUDManager {
 		ScreenPosition pos = renderer.load();
 
 		if (pos == null) {
-				pos = ScreenPosition.fromRelativePosition(0.5, 0.5);
+			pos = ScreenPosition.fromRelativePosition(0.5, 0.5);
 		}
 		
 		if (!renderer.isUseGl()) {
@@ -103,8 +103,8 @@ public class HUDManager {
 					scaleFactor = 1.33;
 					break;
 			}
-		
-			GlStateManager.pushMatrix();
+			
+			
 			HashMap<String, Integer> settings = renderer.getSettings().getSettings();
 			float floatScale;
 			
@@ -113,9 +113,11 @@ public class HUDManager {
 				scaleFactor *= floatScale;
 			}
 			
+			GlStateManager.pushMatrix();
 			GlStateManager.scale(scaleFactor, scaleFactor, scaleFactor);
 			ScreenPosition bufferPos = ScreenPosition.fromRelativePosition(pos.getRelativeX(), pos.getRelativeY());
 			bufferPos.setAbsolute((int) (bufferPos.getAbsoluteX()/scaleFactor), (int) (bufferPos.getAbsoluteY()/scaleFactor));
+			
 			adjustBounds(renderer, bufferPos);
 			renderer.render(bufferPos);
 			GlStateManager.popMatrix();

@@ -1,52 +1,52 @@
-[12:51:27] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
-[12:51:27] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
-[12:51:27] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
-[12:51:27] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
-[12:51:27] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
-[12:51:27] [main/ERROR]: Initialising mixin subsystem after game pre-init phase! Some mixins may be skipped.
-[12:51:27] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
-[12:51:27] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
-[12:51:27] [main/INFO]: Compatibility level set to JAVA_8
-[12:51:27] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
-[12:51:28] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
-[12:51:28] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
-[12:51:28] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
-[12:51:28] [main/INFO]: Mixing client.gui.GuiMainMenuMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiMainMenu
-[12:51:30] [Client thread/INFO]: Setting user: Player516
-[12:51:30] [Client thread/INFO]: (Session ID is token:FML:Player516)
-[12:51:30] [Client thread/INFO]: Mixing client.settings.GameSettingsMixin from mixins.gandyclient.json into net.minecraft.client.settings.GameSettings
-[12:51:30] [Client thread/INFO]: LWJGL Version: 2.9.4
-[12:51:31] [Client thread/INFO]: Reloading ResourceManager: Default
-[12:51:32] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[12:51:32] [Thread-8/INFO]: Initializing LWJGL OpenAL
-[12:51:32] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[12:51:32] [Thread-8/INFO]: OpenAL initialized.
-[12:51:32] [Sound Library Loader/INFO]: Sound engine started
-[12:51:33] [Client thread/INFO]: Created: 512x512 textures-atlas
-[12:51:33] [Client thread/INFO]: Mixing client.renderer.EntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
-[12:51:33] [Client thread/INFO]: Mixing client.gui.GuiNewChatMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiNewChat
-[12:51:36] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
-[12:51:36] [Server thread/INFO]: Generating keypair
-[12:51:36] [Server thread/INFO]: Preparing start region for level 0
-[12:51:36] [Server thread/INFO]: Changing view distance to 12, from 10
-[12:51:37] [Server thread/INFO]: Player516[local:E:73074118] logged in with entity id 123 at (39.05151183259471, 89.0155550727022, -16.236446204975824)
-[12:51:37] [Server thread/INFO]: Player516 joined the game
-[12:51:38] [Server thread/INFO]: Saving and pausing game...
-[12:51:38] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[12:51:38] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[12:51:38] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[12:51:40] [Server thread/INFO]: Player516 has just earned the achievement [Taking Inventory]
-[12:51:40] [Client thread/INFO]: [CHAT] Player516 has just earned the achievement [Taking Inventory]
-[12:51:45] [Server thread/INFO]: Saving and pausing game...
-[12:51:45] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[12:51:45] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[12:51:45] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[12:51:46] [Server thread/INFO]: Stopping server
-[12:51:46] [Server thread/INFO]: Saving players
-[12:51:46] [Server thread/INFO]: Saving worlds
-[12:51:46] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
-[12:51:46] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
-[12:51:46] [Server thread/INFO]: Saving chunks for level 'New World'/The End
-[12:51:46] [Client thread/INFO]: Stopping!
-[12:51:46] [Client thread/INFO]: SoundSystem shutting down...
-[12:51:46] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[16:03:39] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
+[16:03:39] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
+[16:03:39] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
+[16:03:39] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
+[16:03:39] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
+[16:03:39] [main/ERROR]: Initialising mixin subsystem after game pre-init phase! Some mixins may be skipped.
+[16:03:39] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
+[16:03:39] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
+[16:03:39] [main/INFO]: Compatibility level set to JAVA_8
+[16:03:39] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
+[16:03:40] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
+[16:03:40] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[16:03:40] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
+[16:03:40] [main/INFO]: Mixing client.gui.GuiMainMenuMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiMainMenu
+[16:03:42] [Client thread/INFO]: Setting user: Player536
+[16:03:42] [Client thread/INFO]: (Session ID is token:FML:Player536)
+[16:03:42] [Client thread/INFO]: Mixing client.settings.GameSettingsMixin from mixins.gandyclient.json into net.minecraft.client.settings.GameSettings
+[16:03:43] [Client thread/INFO]: LWJGL Version: 2.9.4
+[16:03:43] [Client thread/INFO]: Reloading ResourceManager: Default
+[16:03:44] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[16:03:44] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[16:03:44] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[16:03:44] [Thread-8/INFO]: OpenAL initialized.
+[16:03:44] [Sound Library Loader/INFO]: Sound engine started
+[16:03:45] [Client thread/INFO]: Created: 512x512 textures-atlas
+[16:03:45] [Client thread/INFO]: Mixing client.renderer.EntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
+[16:03:45] [Client thread/INFO]: Mixing client.gui.GuiNewChatMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiNewChat
+[16:03:48] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
+[16:03:48] [Server thread/INFO]: Generating keypair
+[16:03:48] [Server thread/INFO]: Preparing start region for level 0
+[16:03:49] [Server thread/INFO]: Changing view distance to 12, from 10
+[16:03:49] [Server thread/INFO]: Player536[local:E:d4ba6f65] logged in with entity id 236 at (-137.24381364849927, 80.0, 170.3693906158033)
+[16:03:49] [Server thread/INFO]: Player536 joined the game
+[16:03:53] [Server thread/INFO]: Saving and pausing game...
+[16:03:53] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:03:54] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:03:54] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:03:55] [Server thread/INFO]: Player536 has just earned the achievement [Taking Inventory]
+[16:03:55] [Client thread/INFO]: [CHAT] Player536 has just earned the achievement [Taking Inventory]
+[16:04:00] [Server thread/INFO]: Saving and pausing game...
+[16:04:00] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:04:01] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:04:01] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:04:01] [Server thread/INFO]: Stopping server
+[16:04:01] [Server thread/INFO]: Saving players
+[16:04:01] [Server thread/INFO]: Saving worlds
+[16:04:01] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[16:04:01] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[16:04:01] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[16:04:02] [Client thread/INFO]: Stopping!
+[16:04:02] [Client thread/INFO]: SoundSystem shutting down...
+[16:04:02] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

@@ -26,8 +26,6 @@ public class HUDConfigScreen extends GuiScreen {
 		Collection<ModDraggable> registeredRenderers = api.getRegisteredRenderers();
 		
 		for (ModDraggable render : registeredRenderers) {
-			if (!render.isEnabled()) continue;
-			
 			ScreenPosition pos = render.load();
 			
 			if (pos == null) {
@@ -48,7 +46,7 @@ public class HUDConfigScreen extends GuiScreen {
 		
 		this.drawHollowRect(0, 0, this.width - 1, this.height - 1, 0xFFFF0000);
 		
-		for (IRenderer renderer : renderers.keySet()) {
+		for (ModDraggable renderer : renderers.keySet()) {
 			ScreenPosition pos = renderers.get(renderer);
 			int guiScale = mc.gameSettings.guiScale;
 			double scaleFactor = 1;
