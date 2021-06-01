@@ -6,7 +6,6 @@ import java.util.HashMap;
 import GandyClient.Constants;
 import GandyClient.gui.ScreenContainer;
 import GandyClient.gui.hud.HUDManager;
-import GandyClient.gui.hud.IRenderer;
 import GandyClient.gui.hud.ScreenPosition;
 import GandyClient.modules.ModDraggable;
 import net.minecraft.client.Minecraft;

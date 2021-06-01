@@ -32,6 +32,7 @@ public class SettingsScreen extends ScreenContainer {
 	}
 	
 	public void drawScreen (ModMenuScreen mainScreen) {
+		if (mainScreen == null) return;
 		if (this.reference == null) this.reference = mainScreen;
 		
 		ScaledResolution res = new ScaledResolution(mc);

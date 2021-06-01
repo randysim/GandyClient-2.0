@@ -69,6 +69,7 @@ public class EventManager {
 		cleanMap(true);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void register (final Method method, final Object o) {
 		final Class<?> clazz = method.getParameterTypes()[0]; 
 		final EventData methodData = new EventData(o, method, method.getAnnotation(EventTarget.class).value());

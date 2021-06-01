@@ -9,7 +9,7 @@ import GandyClient.gui.elements.GuiSlider;
 import GandyClient.gui.modmenu.screens.SettingsScreen;
 
 public class SettingInstances {
-	private static Set<SettingsScreen> settings;
+	private Set<SettingsScreen> settings;
 	
 	private static SettingInstances instance = null;
 	
@@ -18,7 +18,7 @@ public class SettingInstances {
 		return instance;
 	}
 	
-	public static void register () {
+	public void register () {
 		settings = Sets.newHashSet();
 		SettingsScreen FPS = new SettingsScreen(0, 0, 1.0, 1.0, "FPS");
 		FPS.addComponents(
@@ -59,7 +59,12 @@ public class SettingInstances {
 		settings.add(ToggleSprint);
 	}
 	
-	public static SettingsScreen getSetting (String settingsName) {
+	public SettingsScreen getSetting (String settingsName) {
+		if (settings == null) {
+			// registering missing settings...
+			register();
+		}
+		// problem here is that settings is = to null for some reason
 		for (SettingsScreen setting : settings) {
 			if (setting.getName().equalsIgnoreCase(settingsName)) {
 				return setting;

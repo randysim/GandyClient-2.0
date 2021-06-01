@@ -13,6 +13,7 @@ import GandyClient.gui.hud.HUDManager;
 import GandyClient.gui.hud.IRenderer;
 import GandyClient.gui.hud.ScreenPosition;
 import GandyClient.gui.modmenu.screens.ModMenu;
+import GandyClient.gui.modmenu.screens.SettingsScreen;
 import GandyClient.modules.ModDraggable;
 import GandyClient.modules.ModuleManager;
 import net.minecraft.client.Minecraft;
@@ -83,7 +84,8 @@ public class ModMenuScreen extends GuiScreen {
 			modContainer.drawScreen(this);
 		} else {
 			// settings logic
-			SettingInstances.getInstance().getSetting(this.settingName).drawScreen(this);
+			SettingsScreen screen = SettingInstances.getInstance().getSetting(this.settingName);
+			if (screen != null) screen.drawScreen(this);
 		}
 		
 		/* ================================ */
@@ -180,8 +182,8 @@ public class ModMenuScreen extends GuiScreen {
 				}
 			} else {
 				// open settings for mod
-				this.settings = true;
 				this.settingName = mod.getDisplayName();
+				this.settings = true;
 			}
 		}
 		
