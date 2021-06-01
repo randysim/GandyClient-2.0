@@ -7,6 +7,7 @@ import com.google.common.collect.Sets;
 import GandyClient.events.EventManager;
 import GandyClient.gui.hud.HUDManager;
 import GandyClient.gui.modmenu.ModMenuScreen;
+import GandyClient.mixins.client.settings.IKeyBindingMixin;
 import net.minecraft.client.Minecraft;
 
 public class ModuleManager {
@@ -39,12 +40,14 @@ public class ModuleManager {
 	public void enable (ModDraggable mod) {
 		if (this.registeredMods.contains(mod)) HUDManager.getInstance().register(mod);
 		mod.getSettings().updateSetting("ENABLED", 1);
+		mod.setEnabled(true);
 	}
 	public void disable (ModDraggable mod) {
 		if (this.registeredMods.contains(mod)) {
 			HUDManager.getInstance().unregister(mod);
 			
 			mod.getSettings().updateSetting("ENABLED", 0);
+			mod.setEnabled(false);
 			
 			// fullbright logic
 			if (mod.getDisplayName().equalsIgnoreCase("Fullbright")) {

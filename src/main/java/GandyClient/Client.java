@@ -8,6 +8,8 @@ import GandyClient.gui.hud.HUDManager;
 import GandyClient.gui.modmenu.ModEscape;
 import GandyClient.modules.ModInstances;
 import GandyClient.modules.ModuleManager;
+import GandyClient.modules.impl.autogg.AutoGGListener;
+import GandyClient.modules.impl.togglesprintsneak.ToggleSprintListener;
 import GandyClient.utils.Keybinds;
 import GandyClient.utils.Multithreading;
 import net.minecraft.client.Minecraft;
@@ -23,12 +25,20 @@ public class Client {
 	private ModuleManager modManager;
 	private DataManager dataManager;
 	
+	private AutoGGListener ggListener = new AutoGGListener();
+	private ToggleSprintListener sprintListener = new ToggleSprintListener();
+	
 	public void init () {
 		// beginning of this.startGame in Minecraft.java
 		FileManager.init();
 		SplashProgress.setProgress(1, "Intializing Discord RP");
 		RichPresence.start();
 		EventManager.register(this);
+		
+		/* LISTENERS */
+		EventManager.register(ggListener);
+		EventManager.register(sprintListener);
+		
 		SplashProgress.setProgress(1, "Fetching Data");
 		Multithreading.POOL.submit(() -> {
             try {

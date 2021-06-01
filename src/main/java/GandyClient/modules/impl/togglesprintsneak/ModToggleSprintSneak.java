@@ -16,7 +16,7 @@ public class ModToggleSprintSneak extends ModDraggable {
 	public float flyBoostFactor = 1.1F;
 	public int keyHoldTicks = 7;
 	public boolean sprint = false;
-	private String textToRender = "";
+	private String textToRender = "[Sprinting]";
 	
 	public ModToggleSprintSneak () {
 		super();
@@ -52,7 +52,7 @@ public class ModToggleSprintSneak extends ModDraggable {
 	@Override
 	public void render(ScreenPosition pos) {
 		// TODO Auto-generated method stub
-		textToRender = ((GandyClientMovementInput) mc.thePlayer.movementInput).getDisplayText();
+		
 		font.drawStringWithShadow(textToRender, pos.getAbsoluteX(), pos.getAbsoluteY(), -1);
 	}
 	@Override
