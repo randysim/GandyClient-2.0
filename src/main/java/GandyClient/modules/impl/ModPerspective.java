@@ -38,16 +38,16 @@ public class ModPerspective extends ModDraggable {
 		if (settings.getSettings().get("ENABLED") == 0) return;
 		
 		if (
-				Keyboard.getEventKey() == Keybinds.CLIENT_PERSPECTIVE.getKeyCode() && 
-				pressed &&
-				!Keyboard.getEventKeyState()
+				!Keybinds.CLIENT_PERSPECTIVE.isKeyDown() &&  
+				pressed 
 		) {
 				pressed = false;
+				perspectiveToggled = false;
+				mc.gameSettings.thirdPersonView = previousPerspective;
 		}
 		
-		if (Keyboard.getEventKey() == Keybinds.CLIENT_PERSPECTIVE.getKeyCode() && !pressed) {
-			pressed = true;
-			if (Keyboard.getEventKeyState()) {
+		if (Keybinds.CLIENT_PERSPECTIVE.isKeyDown() && !pressed) {
+				pressed = true;
 				perspectiveToggled = !perspectiveToggled;
 				
 				cameraYaw = mc.thePlayer.rotationYaw;
@@ -59,14 +59,7 @@ public class ModPerspective extends ModDraggable {
 				} else {
 					mc.gameSettings.thirdPersonView = previousPerspective;
 				}
-			} else if (returnOnRelease) {
-				perspectiveToggled = false;
-				pressed = false;
-				mc.gameSettings.thirdPersonView = previousPerspective;
 			}
-		}
-		
-		
 	}
 	
 	public float getCameraYaw () {
