@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import GandyClient.events.EventTarget;
-import GandyClient.events.impl.KeyEvent;
+import GandyClient.events.impl.ClientTickEvent;
 import GandyClient.gui.hud.ScreenPosition;
 import GandyClient.modules.ModDraggable;
 import GandyClient.modules.Setting;
@@ -20,6 +20,7 @@ public class ModPerspective extends ModDraggable {
 	private int previousPerspective = 0;
 	private boolean returnOnRelease = true;
 	private boolean perspectiveToggled = false;
+	private boolean pressed = false;
 	
 	public ModPerspective () {
 		super();
@@ -33,9 +34,19 @@ public class ModPerspective extends ModDraggable {
 	}
 	
 	@EventTarget
-	public void keyboardEvent (KeyEvent e) {
+	public void keyboardEvent (ClientTickEvent e) {
 		if (settings.getSettings().get("ENABLED") == 0) return;
-		if (e.getKey() == Keybinds.CLIENT_PERSPECTIVE.getKeyCode()) {
+		
+		if (
+				Keyboard.getEventKey() == Keybinds.CLIENT_PERSPECTIVE.getKeyCode() && 
+				pressed &&
+				!Keyboard.getEventKeyState()
+		) {
+				pressed = false;
+		}
+		
+		if (Keyboard.getEventKey() == Keybinds.CLIENT_PERSPECTIVE.getKeyCode() && !pressed) {
+			pressed = true;
 			if (Keyboard.getEventKeyState()) {
 				perspectiveToggled = !perspectiveToggled;
 				
@@ -50,13 +61,12 @@ public class ModPerspective extends ModDraggable {
 				}
 			} else if (returnOnRelease) {
 				perspectiveToggled = false;
+				pressed = false;
 				mc.gameSettings.thirdPersonView = previousPerspective;
 			}
 		}
 		
-		if (Keyboard.getEventKey() == mc.gameSettings.keyBindTogglePerspective.getKeyCode()) {
-			perspectiveToggled = false;
-		}
+		
 	}
 	
 	public float getCameraYaw () {
@@ -64,6 +74,15 @@ public class ModPerspective extends ModDraggable {
 	}
 	public float getCameraPitch () {
 		return perspectiveToggled ? cameraPitch : mc.thePlayer.rotationPitch;
+	}
+	public void setCameraYaw (float yaw) {
+		cameraYaw = yaw;
+	}
+	public void setCameraPitch (float pitch) {
+		cameraPitch = pitch;
+	}
+	public boolean isToggled () {
+		return perspectiveToggled;
 	}
 	
 	public boolean overrideMouse()

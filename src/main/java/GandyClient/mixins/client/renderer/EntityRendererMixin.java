@@ -1,5 +1,6 @@
 package GandyClient.mixins.client.renderer;
 
+import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -127,4 +128,32 @@ public abstract class EntityRendererMixin {
         d3 = entity.prevPosZ + (entity.posZ - entity.prevPosZ) * partialTicks;
         ((IEntityRendererMixin) (EntityRenderer) (Object) this).setCloudFog(mc.renderGlobal.hasCloudFog(d0, d2, d3, partialTicks));
 	}
+	
+	@Inject(method = "updateCameraAndRender", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/profiler/Profiler;startSection(Ljava/lang/String;)V", args = "ldc=mouse"))
+    private void updateCameraAndRender(float partialTicks, long nanoTime, CallbackInfo ci) {
+		boolean flag2 = Display.isActive();
+        if (Minecraft.getMinecraft().inGameHasFocus && flag2) {
+            if (ModInstances.getModPerspective().isToggled()) {
+                Minecraft.getMinecraft().mouseHelper.mouseXYChange();
+
+                float f = Minecraft.getMinecraft().gameSettings.mouseSensitivity * 0.6F + 0.2F;
+                float f1 = f * f * f * 8.0F;
+                float f2 = (float) Minecraft.getMinecraft().mouseHelper.deltaX * f1;
+                float f3 = (float) Minecraft.getMinecraft().mouseHelper.deltaY * f1;
+
+                // Modifying pitch and yaw values.
+                ModInstances.getModPerspective().setCameraYaw(ModInstances.getModPerspective().getCameraYaw() + (f2 / 8.0F));
+                ModInstances.getModPerspective().setCameraPitch(ModInstances.getModPerspective().getCameraPitch() + (f3 / 8.0F));
+
+                // Checking if pitch exceeds maximum range.
+                if (Math.abs(ModInstances.getModPerspective().getCameraPitch()) > 90.0F) {
+                    if (ModInstances.getModPerspective().getCameraPitch() > 0.0F) {
+                    	ModInstances.getModPerspective().setCameraPitch(90.0F);
+                    } else {
+                        ModInstances.getModPerspective().setCameraPitch(-90.0F);
+                    }
+                }
+            }
+        }
+    }
 }
