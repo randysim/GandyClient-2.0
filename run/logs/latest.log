@@ -1,0 +1,55 @@
+[10:13:36] [main/INFO]: Extra: [--tweakClass, GandyClient.launch.GandyClientTweaker]
+[10:13:36] [main/INFO]: Running with arguments: [--userProperties, {}, --assetsDir, C:/Users/phone/.gradle/caches/minecraft/assets, --assetIndex, 1.8, --accessToken{REDACTED}, --version, 1.8.9, --tweakClass, GandyClient.launch.GandyClientTweaker]
+[10:13:36] [main/INFO]: Loading tweak class name GandyClient.launch.GandyClientTweaker
+[10:13:36] [main/INFO]: Using primary tweak class name GandyClient.launch.GandyClientTweaker
+[10:13:36] [main/INFO]: Calling tweak class GandyClient.launch.GandyClientTweaker
+[10:13:36] [main/ERROR]: Initialising mixin subsystem after game pre-init phase! Some mixins may be skipped.
+[10:13:36] [main/INFO]: SpongePowered MIXIN Subsystem Version=0.7.11 Source=file:/C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/spongepowered.zip Service=LaunchWrapper Env=UNKNOWN
+[10:13:36] [main/INFO]: FML platform manager could not load class cpw.mods.fml.relauncher.CoreModManager. Proceeding without FML support.
+[10:13:36] [main/INFO]: Compatibility level set to JAVA_8
+[10:13:36] [main/ERROR]: Mixin config mixins.gandyclient.json does not specify "minVersion" property
+[10:13:36] [main/INFO]: Remapping refMap mixin.gandyclient.refmap.json using C:\Users\phone\.gradle\caches\minecraft\de\oceanlabs\mcp\mcp_stable\22\srgs\srg-mcp.srg
+[10:13:36] [main/INFO]: Launching wrapped minecraft {net.minecraft.client.main.Main}
+[10:13:36] [main/INFO]: Mixing client.MinecraftMixin from mixins.gandyclient.json into net.minecraft.client.Minecraft
+[10:13:36] [main/INFO]: Mixing client.gui.GuiMainMenuMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiMainMenu
+[10:13:38] [Client thread/INFO]: Setting user: Player399
+[10:13:38] [Client thread/INFO]: (Session ID is token:FML:Player399)
+[10:13:39] [Client thread/INFO]: Mixing client.settings.GameSettingsMixin from mixins.gandyclient.json into net.minecraft.client.settings.GameSettings
+[10:13:39] [Client thread/INFO]: Mixing client.settings.IKeyBindingMixin from mixins.gandyclient.json into net.minecraft.client.settings.KeyBinding
+[10:13:39] [Client thread/INFO]: LWJGL Version: 2.9.4
+[10:13:40] [Client thread/INFO]: Reloading ResourceManager: Default
+[10:13:40] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[10:13:40] [Thread-8/INFO]: Initializing LWJGL OpenAL
+[10:13:40] [Thread-8/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[10:13:40] [Thread-8/INFO]: OpenAL initialized.
+[10:13:41] [Sound Library Loader/INFO]: Sound engine started
+[10:13:41] [Client thread/INFO]: Created: 512x512 textures-atlas
+[10:13:41] [Client thread/INFO]: Mixing client.renderer.EntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
+[10:13:41] [Client thread/INFO]: Mixing client.renderer.IEntityRendererMixin from mixins.gandyclient.json into net.minecraft.client.renderer.EntityRenderer
+[10:13:42] [Client thread/INFO]: Mixing client.gui.GuiNewChatMixin from mixins.gandyclient.json into net.minecraft.client.gui.GuiNewChat
+[10:13:47] [Server thread/INFO]: Starting integrated minecraft server version 1.8.9
+[10:13:47] [Server thread/INFO]: Generating keypair
+[10:13:47] [Server thread/INFO]: Preparing start region for level 0
+[10:13:48] [Server thread/INFO]: Changing view distance to 12, from 10
+[10:13:48] [Server thread/INFO]: Player399[local:E:445a7914] logged in with entity id 286 at (-184.45631168490863, 80.29551992940208, 186.57055844058988)
+[10:13:48] [Server thread/INFO]: Player399 joined the game
+[10:13:50] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
+[10:13:56] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
+[10:14:07] [Chunk Batcher 0/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
+[10:14:11] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
+[10:14:14] [Chunk Batcher 1/WARN]: Needed to grow BufferBuilder buffer: Old size 524288 bytes, new size 2621440 bytes.
+[10:14:27] [Server thread/INFO]: Player399 has just earned the achievement [Taking Inventory]
+[10:14:27] [Client thread/INFO]: [CHAT] Player399 has just earned the achievement [Taking Inventory]
+[10:16:57] [Server thread/INFO]: Saving and pausing game...
+[10:16:57] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[10:16:57] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[10:16:57] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[10:16:58] [Server thread/INFO]: Stopping server
+[10:16:58] [Server thread/INFO]: Saving players
+[10:16:58] [Server thread/INFO]: Saving worlds
+[10:16:58] [Server thread/INFO]: Saving chunks for level 'New World'/Overworld
+[10:16:58] [Server thread/INFO]: Saving chunks for level 'New World'/Nether
+[10:16:58] [Server thread/INFO]: Saving chunks for level 'New World'/The End
+[10:16:58] [Client thread/INFO]: Stopping!
+[10:16:58] [Client thread/INFO]: SoundSystem shutting down...
+[10:16:58] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

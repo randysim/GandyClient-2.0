@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import GandyClient.Client;
 import GandyClient.events.impl.ClientTickEvent;
+import GandyClient.events.impl.KeyEvent;
 import GandyClient.gui.SplashProgress;
 import GandyClient.utils.ClientLogger;
 import net.minecraft.client.Minecraft;

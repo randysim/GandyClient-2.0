@@ -28,6 +28,7 @@ public class ModuleManager {
 	
 	public void register (ModDraggable mod) {
 			this.registeredMods.add(mod);
+			EventManager.register(mod);
 			if (mod.getSettings().getSettings().get("ENABLED") == 1) {
 				this.enable(mod);
 			}

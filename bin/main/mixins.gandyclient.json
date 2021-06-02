@@ -9,6 +9,7 @@
 	"client.gui.GuiMainMenuMixin",
 	"client.gui.GuiNewChatMixin",
 	"client.renderer.EntityRendererMixin",
+	"client.renderer.IEntityRendererMixin",
 	"client.settings.GameSettingsMixin",
         "client.settings.IKeyBindingMixin"
    ]
