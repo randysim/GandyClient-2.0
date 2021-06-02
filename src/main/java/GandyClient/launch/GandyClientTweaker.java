@@ -1,6 +1,7 @@
 package GandyClient.launch;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -9,79 +10,73 @@ import org.spongepowered.asm.launch.MixinBootstrap;
 import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
-import GandyClient.utils.ClientLogger;
 import net.minecraft.launchwrapper.Launch;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 
+// taken from hyperium
 public class GandyClientTweaker implements ITweaker {
-	
-	public static GandyClientTweaker INSTANCE;
-	
-	private ArrayList<String> gameArgs = new ArrayList<>();
-	
-	// skid moment
-	private boolean isRunningOptifine = Launch.classLoader.getTransformers().stream()
-	        .anyMatch(p -> p.getClass().getName().toLowerCase(Locale.ENGLISH).contains("optifine"));
-	
-	public GandyClientTweaker() {
+
+    public static GandyClientTweaker INSTANCE;
+
+    private ArrayList<String> args = new ArrayList<>();
+
+    private boolean isRunningOptifine = Launch.classLoader.getTransformers().stream()
+        .anyMatch(p -> p.getClass().getName().toLowerCase(Locale.ENGLISH).contains("optifine"));
+
+    public GandyClientTweaker() {
         INSTANCE = this;
     }
 
-	
-	@Override	
-	public void acceptOptions(List<String> args, File gameFolder, File assetsFolder, String profile) {
-		// TODO Auto-generated method stub
-		this.gameArgs.addAll(args);
-		addGameArg("gameDir", gameFolder);
-		addGameArg("assetsDir", assetsFolder);
-		addGameArg("version", profile);
-	}
+    @Override
+    public void acceptOptions(List<String> args, File gameDir, final File assetsDir, String profile) {
+        this.args.addAll(args);
 
-	@Override
-	public String[] getLaunchArguments() {
-		// TODO Auto-generated method stub
-		return isRunningOptifine ? new String[0] : gameArgs.toArray(new String[]{});
-	}
+        addArg("gameDir", gameDir);
+        addArg("assetsDir", assetsDir);
+        addArg("version", profile);
+    }
 
-	@Override
-	public String getLaunchTarget() {
-		// TODO Auto-generated method stub
-		return "net.minecraft.client.main.Main";
-	}
+    @Override
+    public String getLaunchTarget() {
+        return "net.minecraft.client.main.Main";
+    }
 
-	@Override
-	public void injectIntoClassLoader(LaunchClassLoader classLoader) {
-		// TODO Auto-generated method stub
-		ClientLogger.info("Injecting Mixins");
-		MixinBootstrap.init();
-		MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
+    @Override
+    public void injectIntoClassLoader(LaunchClassLoader classLoader) {
+        MixinBootstrap.init();
+
+        MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.gandyclient.json");
-        
+
         if (isRunningOptifine) {
-            environment.setObfuscationContext("notch"); 
+            environment.setObfuscationContext("notch"); // Switch's to notch mappings
         }
 
         if (environment.getObfuscationContext() == null) {
-            environment.setObfuscationContext("notch"); 
+            environment.setObfuscationContext("notch"); // Switch's to notch mappings
         }
-        
+
+        try {
+            classLoader.addURL(new File(System.getProperty("java.home"), "lib/ext/nashorn.jar").toURI().toURL());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
         environment.setSide(MixinEnvironment.Side.CLIENT);
-	}
-	
-	 private void addGameArg(String argType, Object argValue) {
-	        gameArgs.add("--" + argType);
-	        if (argValue instanceof String) {
-	        	gameArgs.add((String) argValue);
-	        } else if (argValue instanceof File) {
-	        	gameArgs.add(((File) argValue).getAbsolutePath());
-	        } else {
-	        	gameArgs.add(".");
-	        }
-	        
-	 }
-	 
-	 public boolean isUsingOptifine() {
-	        return isRunningOptifine;
-	 }
+    }
+
+    @Override
+    public String[] getLaunchArguments() {
+        return isRunningOptifine ? new String[0] : args.toArray(new String[]{});
+    }
+
+    private void addArg(String label, Object value) {
+        args.add("--" + label);
+        args.add(value instanceof String ? (String) value : value instanceof File ? ((File) value).getAbsolutePath() : ".");
+    }
+
+    public boolean isUsingOptifine() {
+        return isRunningOptifine;
+    }
 }
