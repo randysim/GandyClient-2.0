@@ -18,7 +18,7 @@ public class SettingsManager {
 	}
 	
 	public static void updateSetting (String modName, String optionName, int value) {
-		String mod = modName.toUpperCase();
+		String mod = modName.toUpperCase(); // this is simple name
 		String property = optionName.toUpperCase();
 		
 		for (Setting setting : settings) {

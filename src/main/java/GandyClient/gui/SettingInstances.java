@@ -27,7 +27,6 @@ public class SettingInstances {
 		);
 		settings.add(FPS);
 		
-		
 		SettingsScreen AutoGG = new SettingsScreen(0, 0, 1.0, 1.0, "AutoGG");
 		AutoGG.addComponents(
 				new GuiCheckBox("Auto L", "ModAutoGG", "SAY_L")
@@ -57,6 +56,12 @@ public class SettingInstances {
 				new GuiSlider("Size", "ModToggleSprintSneak", "SIZE", 0.01F, 2F)
 		);
 		settings.add(ToggleSprint);
+		
+		SettingsScreen OldAnimations = new SettingsScreen(0, 0, 1.0, 1.0, "1.7 Animations");
+		OldAnimations.addComponents(
+				new GuiCheckBox("Block Hit", "ModOldAnimations", "BLOCK_HIT")
+		);
+		settings.add(OldAnimations);
 	}
 	
 	public SettingsScreen getSetting (String settingsName) {

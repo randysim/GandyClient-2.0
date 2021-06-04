@@ -17,8 +17,9 @@ public class ModOldAnimations extends ModDraggable {
 		if (!settings.getSettings().containsKey("ENABLED")) {
 			settings.updateSetting("ENABLED", 0);
 		}
-		if (!settings.getSettings().containsKey("BLOCK_HIT_GROUND")) {
-			settings.updateSetting("BLOCK_HIT_GROUND", 0);
+		
+		if (!settings.getSettings().containsKey("BLOCK_HIT")) {
+			settings.updateSetting("BLOCK_HIT", 0);
 		}
 	}
 	

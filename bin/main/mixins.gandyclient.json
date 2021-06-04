@@ -10,6 +10,7 @@
 	"client.gui.GuiNewChatMixin",
 	"client.renderer.EntityRendererMixin",
 	"client.renderer.IEntityRendererMixin",
+	"client.renderer.ItemRendererMixin",
 	"client.settings.GameSettingsMixin",
         "client.settings.IKeyBindingMixin"
    ]
