@@ -1,6 +1,5 @@
 package GandyClient.mixins.client.renderer;
 
-import org.lwjgl.opengl.Display;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -12,6 +11,7 @@ import GandyClient.events.impl.RenderEvent;
 import GandyClient.modules.ModInstances;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
@@ -34,6 +35,8 @@ public abstract class EntityRendererMixin {
     private float thirdPersonDistanceTemp;
 	@Shadow
 	private Minecraft mc;
+	@Shadow
+	private boolean isDrawBlockOutline() {return true;}
 	
 	@Inject(method = "updateCameraAndRender", at = @At("RETURN"))
 	private void onRenderReturn (CallbackInfo info) {
@@ -133,4 +136,45 @@ public abstract class EntityRendererMixin {
     private void updateCameraAndRender(float partialTicks, long nanoTime, CallbackInfo ci) {
 		ModInstances.getModPerspective().overrideMouse();
     }
+	
+	// block outline event
+	@Inject(method = "renderWorldPass", at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/profiler/Profiler;endStartSection(Ljava/lang/String;)V", args = "ldc=outline"), cancellable = true)
+	private void checkBlockOverlay(int pass, float partialTicks, long finishTimeNano, CallbackInfo ci) {
+		if (
+				mc.objectMouseOver == null || 
+				mc.objectMouseOver.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK
+		) {
+            return;
+        }
+
+        MovingObjectPosition blockPosition = mc.thePlayer.rayTrace(6.0, partialTicks); // get block 6 units max away from player head (creative)
+        if (
+        		blockPosition == null || 
+        		blockPosition.typeOfHit != MovingObjectPosition.MovingObjectType.BLOCK
+        ) {
+            return;
+        }
+
+        Block block = mc.thePlayer.worldObj.getBlockState(blockPosition.getBlockPos()).getBlock();
+        if (
+        		block == null || 
+        		block == Blocks.air || 
+        		block == Blocks.barrier || 
+        		block == Blocks.water || 
+        		block == Blocks.flowing_water || 
+        		block == Blocks.lava || 
+        		block == Blocks.flowing_lava
+        ) {
+            return;
+        }
+        
+        EntityPlayer player = ((EntityPlayer) mc.getRenderViewEntity());
+        MovingObjectPosition position = mc.objectMouseOver;
+        
+        /* 
+         * Call BlockOutlineDraw event with args (player, position, partialTicks)
+         * here
+         * */
+        
+	}
 }
