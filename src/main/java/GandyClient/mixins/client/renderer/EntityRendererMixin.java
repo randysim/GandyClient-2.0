@@ -7,11 +7,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import GandyClient.events.impl.DrawBlockOutlineEvent;
 import GandyClient.events.impl.RenderEvent;
 import GandyClient.modules.ModInstances;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -176,5 +176,6 @@ public abstract class EntityRendererMixin {
          * here
          * */
         
+        new DrawBlockOutlineEvent(player, position, partialTicks).call();
 	}
 }

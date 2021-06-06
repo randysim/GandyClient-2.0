@@ -1,6 +1,7 @@
 package GandyClient.modules;
 
 import GandyClient.gui.hud.HUDManager;
+import GandyClient.modules.impl.ModBlockOverlay;
 import GandyClient.modules.impl.ModFPS;
 import GandyClient.modules.impl.ModFullBright;
 import GandyClient.modules.impl.ModKeystrokes;
@@ -31,6 +32,8 @@ private static ModFPS modFPS;
 	private static ModPerspective modPerspective;
 	
 	private static ModOldAnimations modOldAnimations;
+	
+	private static ModBlockOverlay modBlockOverlay;
 	
 	public static void register (ModuleManager api) {		
 		modKeystrokes = new ModKeystrokes();
@@ -71,6 +74,10 @@ private static ModFPS modFPS;
 		modOldAnimations = new ModOldAnimations();
 		api.register(modOldAnimations);
 		SettingsManager.getInstance().register(modOldAnimations.getSettings());
+		
+		modBlockOverlay = new ModBlockOverlay();
+		api.register(modBlockOverlay);
+		SettingsManager.getInstance().register(modBlockOverlay.getSettings());
 	}
 	
 	public static ModToggleSprintSneak getModToggleSprintSneak () {
