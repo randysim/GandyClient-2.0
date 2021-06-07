@@ -45,7 +45,8 @@ public class ModBlockOverlay extends ModDraggable {
 		MovingObjectPosition position = event.getPosition();
 		float partialTicks = event.getPartialTicks();
 		
-		Color tempColor = new Color(0, 0, 0);
+		// change this later when the guicolor picker class comes out
+		Color tempColor = new Color(255, 255, 255);
 		
 		
 		GlStateManager.enableBlend();
