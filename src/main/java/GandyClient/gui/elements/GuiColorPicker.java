@@ -105,8 +105,6 @@ public class GuiColorPicker implements GuiElement {
 		
 		font.drawString("RGB Color", (int)(pos.getAbsoluteX()/scaleFactor) + ((this.getWidth()/2) - (font.getStringWidth("RGB Color")/2)), (int) (pos.getAbsoluteY()/scaleFactor), -1);
 		
-		GL11.glPopMatrix();
-		
 		// draw sliders
 		if (red.load() == null)	red.save(ScreenPosition.fromAbsolute(
 				pos.getAbsoluteX() + 20, 
@@ -127,7 +125,7 @@ public class GuiColorPicker implements GuiElement {
 		
 		
 		/* ============================== */
-		
+		GL11.glPopMatrix();
 	}
 
 	@Override
