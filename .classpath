@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/slick.jar"/>
 	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/1.8.9decomp.jar"/>
 	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/lwjgl-2.9.4-nightly-20150209.jar"/>
+	<classpathentry kind="lib" path="C:/Users/phone/OneDrive/Desktop/GradleClient/GandyClient/libs/commons-io-2.9.0.jar"/>
 	<classpathentry kind="output" path="bin/default"/>
 </classpath>

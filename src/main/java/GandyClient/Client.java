@@ -1,5 +1,6 @@
 package GandyClient;
 
+import GandyClient.cosmetics.CapeManager;
 import GandyClient.events.EventManager;
 import GandyClient.events.EventTarget;
 import GandyClient.events.impl.ClientTickEvent;
@@ -24,6 +25,7 @@ public class Client {
 	private HUDManager hudManager;
 	private ModuleManager modManager;
 	private DataManager dataManager;
+	private CapeManager capeManager;
 	
 	private AutoGGListener ggListener = new AutoGGListener();
 	private ToggleSprintListener sprintListener = new ToggleSprintListener();
@@ -34,6 +36,7 @@ public class Client {
 		SplashProgress.setProgress(1, "Intializing Discord RP");
 		RichPresence.start();
 		EventManager.register(this);
+		capeManager = CapeManager.getInstance();
 		
 		/* LISTENERS */
 		EventManager.register(ggListener);
@@ -68,6 +71,10 @@ public class Client {
 	
 	public DataManager getDataManager () {
 		return dataManager;
+	}
+	
+	public CapeManager getCapeManager () {
+		return capeManager;
 	}
 	
 	@EventTarget

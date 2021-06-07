@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import org.lwjgl.opengl.GL11;
 
+import GandyClient.Constants;
 import GandyClient.events.EventTarget;
 import GandyClient.events.impl.DrawBlockOutlineEvent;
 import GandyClient.gui.hud.ScreenPosition;
@@ -31,6 +32,9 @@ public class ModBlockOverlay extends ModDraggable {
 		if (!settings.getSettings().containsKey("ENABLED")) {
 			settings.updateSetting("ENABLED", 0);
 		}
+		if (!settings.getSettings().containsKey("OUTLINE_WIDTH")) {
+			settings.updateSetting("OUTLINE_WIDTH", (int) (Constants.FLOAT_SCALE * 0.25));
+		}
 	}
 	
 	@EventTarget
@@ -41,13 +45,15 @@ public class ModBlockOverlay extends ModDraggable {
 		MovingObjectPosition position = event.getPosition();
 		float partialTicks = event.getPartialTicks();
 		
-		Color tempColor = new Color(255, 0, 0);
+		Color tempColor = new Color(0, 0, 0);
 		
 		
 		GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         GlStateManager.color(((float) tempColor.getRed())/255.0F, ((float) tempColor.getBlue())/255.0F, ((float) tempColor.getBlue())/255.0F, 1.0F);
-        GL11.glLineWidth(2.0F);
+        GL11.glLineWidth(
+        		((float)settings.getSettings().get("OUTLINE_WIDTH")/(float)Constants.FLOAT_SCALE) * 8F
+        );
         GlStateManager.disableTexture2D();
 
         GlStateManager.depthMask(false);

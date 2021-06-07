@@ -62,6 +62,12 @@ public class SettingInstances {
 				new GuiCheckBox("Block Hit", "ModOldAnimations", "BLOCK_HIT")
 		);
 		settings.add(OldAnimations);
+		
+		SettingsScreen BlockOverlay = new SettingsScreen(0, 0, 1.0, 1.0, "Block Overlay");
+		BlockOverlay.addComponents(
+			new GuiSlider("Outline Width", "ModBlockOverlay", "OUTLINE_WIDTH", 0.01F, 1F)	
+		);	
+		settings.add(BlockOverlay);
 	}
 	
 	public SettingsScreen getSetting (String settingsName) {
