@@ -109,16 +109,16 @@ public class GuiColorPicker implements GuiElement {
 		
 		// draw sliders
 		if (red.load() == null)	red.save(ScreenPosition.fromAbsolute(
-				(int)(pos.getAbsoluteX()/scaleFactor) + 20, 
-				(int) (pos.getAbsoluteY()/scaleFactor) + font.FONT_HEIGHT
+				pos.getAbsoluteX() + 20, 
+				pos.getAbsoluteY() + font.FONT_HEIGHT
 			));
 		if (blue.load() == null) blue.save(ScreenPosition.fromAbsolute(
-				(int)(pos.getAbsoluteX()/scaleFactor) + 20, 
-				(int) (pos.getAbsoluteY()/scaleFactor) + font.FONT_HEIGHT + red.getHeight()
+				pos.getAbsoluteX() + 20, 
+				pos.getAbsoluteY() + font.FONT_HEIGHT + red.getHeight()
 		));
 		if (green.load() == null) green.save(ScreenPosition.fromAbsolute(
-				(int)(pos.getAbsoluteX()/scaleFactor) + 20, 
-				(int) (pos.getAbsoluteY()/scaleFactor) + font.FONT_HEIGHT + red.getHeight() + blue.getHeight()
+				pos.getAbsoluteX() + 20, 
+				pos.getAbsoluteY() + font.FONT_HEIGHT + red.getHeight() + blue.getHeight()
 			));
 		
 		red.render(red.load());
