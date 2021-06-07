@@ -155,7 +155,12 @@ public class GuiSlider implements GuiElement {
 	@Override
 	public void saveSettings() {
 		// TODO Auto-generated method stub
+		if (this.mod == null) return;
 		SettingsManager.getInstance().updateSetting(this.mod, this.option, (int)(Constants.FLOAT_SCALE * this.currentValue));
+	}
+	
+	public float getValue () {
+		return this.currentValue;
 	}
 
 }

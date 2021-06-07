@@ -5,6 +5,7 @@ import java.util.Set;
 import com.google.common.collect.Sets;
 
 import GandyClient.gui.elements.GuiCheckBox;
+import GandyClient.gui.elements.GuiColorPicker;
 import GandyClient.gui.elements.GuiSlider;
 import GandyClient.gui.modmenu.screens.SettingsScreen;
 
@@ -65,7 +66,8 @@ public class SettingInstances {
 		
 		SettingsScreen BlockOverlay = new SettingsScreen(0, 0, 1.0, 1.0, "Block Overlay");
 		BlockOverlay.addComponents(
-			new GuiSlider("Outline Width", "ModBlockOverlay", "OUTLINE_WIDTH", 0.01F, 1F)	
+			new GuiSlider("Outline Width", "ModBlockOverlay", "OUTLINE_WIDTH", 0.01F, 2F),
+			new GuiColorPicker("ModBlockOverlay")
 		);	
 		settings.add(BlockOverlay);
 	}

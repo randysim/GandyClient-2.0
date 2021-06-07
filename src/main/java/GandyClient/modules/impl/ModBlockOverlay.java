@@ -35,6 +35,16 @@ public class ModBlockOverlay extends ModDraggable {
 		if (!settings.getSettings().containsKey("OUTLINE_WIDTH")) {
 			settings.updateSetting("OUTLINE_WIDTH", (int) (Constants.FLOAT_SCALE * 0.25));
 		}
+		
+		if (!settings.getSettings().containsKey("COLOR_RED")) {
+			settings.updateSetting("COLOR_RED", 0);
+		}
+		if (!settings.getSettings().containsKey("COLOR_BLUE")) {
+			settings.updateSetting("COLOR_BLUE", 0);
+		}
+		if (!settings.getSettings().containsKey("COLOR_GREEN")) {
+			settings.updateSetting("COLOR_GREEN", 0);
+		}
 	}
 	
 	@EventTarget
@@ -45,13 +55,10 @@ public class ModBlockOverlay extends ModDraggable {
 		MovingObjectPosition position = event.getPosition();
 		float partialTicks = event.getPartialTicks();
 		
-		// change this later when the guicolor picker class comes out
-		Color tempColor = new Color(255, 255, 255);
-		
 		
 		GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-        GlStateManager.color(((float) tempColor.getRed())/255.0F, ((float) tempColor.getBlue())/255.0F, ((float) tempColor.getBlue())/255.0F, 1.0F);
+        GlStateManager.color((float)settings.getSettings().get("COLOR_RED")/(float)Constants.FLOAT_SCALE, (float)settings.getSettings().get("COLOR_GREEN")/(float) Constants.FLOAT_SCALE, (float)settings.getSettings().get("COLOR_BLUE")/(float) Constants.FLOAT_SCALE, 1.0F);
         GL11.glLineWidth(
         		((float)settings.getSettings().get("OUTLINE_WIDTH")/(float)Constants.FLOAT_SCALE) * 8F
         );

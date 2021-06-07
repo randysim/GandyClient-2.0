@@ -124,9 +124,6 @@ public class SettingsScreen extends ScreenContainer {
 	public void mouseClickMove (int mouseX, int mouseY) {
 		if (selectedElement != null) {
 			ScreenPosition pos = elements.get(selectedElement);
-			int x = pos.getAbsoluteX();
-			int y = pos.getAbsoluteY();
-			double scaleFactor = getScale();
 			selectedElement.save(pos);
 			selectedElement.onDrag(mouseX, mouseY);
 		}
