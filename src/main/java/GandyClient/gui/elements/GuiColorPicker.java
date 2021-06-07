@@ -105,18 +105,20 @@ public class GuiColorPicker implements GuiElement {
 		
 		font.drawString("RGB Color", (int)(pos.getAbsoluteX()/scaleFactor) + ((this.getWidth()/2) - (font.getStringWidth("RGB Color")/2)), (int) (pos.getAbsoluteY()/scaleFactor), -1);
 		
+		GL11.glPopMatrix();
+		
 		// draw sliders
 		if (red.load() == null)	red.save(ScreenPosition.fromAbsolute(
 				pos.getAbsoluteX() + 20, 
-				pos.getAbsoluteY() + font.FONT_HEIGHT
+				pos.getAbsoluteY() + (int) ((font.FONT_HEIGHT) * scaleFactor)
 			));
 		if (blue.load() == null) blue.save(ScreenPosition.fromAbsolute(
 				pos.getAbsoluteX() + 20, 
-				pos.getAbsoluteY() + font.FONT_HEIGHT + red.getHeight()
+				pos.getAbsoluteY() + (int) ((font.FONT_HEIGHT + red.getHeight()) * scaleFactor)
 		));
 		if (green.load() == null) green.save(ScreenPosition.fromAbsolute(
 				pos.getAbsoluteX() + 20, 
-				pos.getAbsoluteY() + font.FONT_HEIGHT + red.getHeight() + blue.getHeight()
+				pos.getAbsoluteY() + (int) ((font.FONT_HEIGHT + red.getHeight() + blue.getHeight()) * scaleFactor)
 			));
 		
 		red.render(red.load());
@@ -125,7 +127,7 @@ public class GuiColorPicker implements GuiElement {
 		
 		
 		/* ============================== */
-		GL11.glPopMatrix();
+		
 	}
 
 	@Override
@@ -150,12 +152,12 @@ public class GuiColorPicker implements GuiElement {
 			break;
 		}
 		
-		if (newX >= red.load().getAbsoluteX() && newX <= red.load().getAbsoluteX() + red.getWidth()) {
-			if (newY >= red.load().getAbsoluteY() && newY <= red.load().getAbsoluteY() + red.getHeight()) {
+		if (newX >= red.load().getAbsoluteX() && newX <= red.load().getAbsoluteX() + (red.getWidth() * scaleFactor)) {
+			if (newY >= red.load().getAbsoluteY() && newY <= red.load().getAbsoluteY() + (red.getHeight() * scaleFactor)) {
 				red.onDrag(newX, newY);
-			} else if (newY >= blue.load().getAbsoluteY() && newY <= blue.load().getAbsoluteY() + blue.getHeight()) {
+			} else if (newY >= blue.load().getAbsoluteY() && newY <= blue.load().getAbsoluteY() + (blue.getHeight() * scaleFactor)) {
 				blue.onDrag(newX, newY);
-			} else if (newY >= green.load().getAbsoluteY() && newY <= green.load().getAbsoluteY() + green.getHeight()) {
+			} else if (newY >= green.load().getAbsoluteY() && newY <= green.load().getAbsoluteY() + (green.getHeight() * scaleFactor)) {
 				green.onDrag(newX, newY);
 			}
 		} 
