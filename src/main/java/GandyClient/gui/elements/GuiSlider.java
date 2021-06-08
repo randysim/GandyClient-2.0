@@ -147,12 +147,6 @@ public class GuiSlider implements GuiElement {
 	}
 
 	@Override
-	public void onClick(int relativeX, int relativeY, ModMenuScreen reference) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void saveSettings() {
 		// TODO Auto-generated method stub
 		if (this.mod == null) return;

@@ -9,8 +9,10 @@ import GandyClient.gui.GuiElement;
 import GandyClient.gui.ScreenContainer;
 import GandyClient.gui.elements.GuiBackButton;
 import GandyClient.gui.hud.ScreenPosition;
+import GandyClient.gui.modmenu.ModEscape;
 import GandyClient.gui.modmenu.ModMenuScreen;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 
 public class SettingsScreen extends ScreenContainer {
@@ -20,6 +22,7 @@ public class SettingsScreen extends ScreenContainer {
 	private int navBarHeight = 0;
 	private Minecraft mc;
 	private ModMenuScreen reference;
+	private ModEscape escapeReference;
 	private int topPadding = 5;
 	private GuiElement selectedElement;
 	
@@ -31,9 +34,14 @@ public class SettingsScreen extends ScreenContainer {
 		this.navBarHeight = mc.fontRendererObj.FONT_HEIGHT;
 	}
 	
-	public void drawScreen (ModMenuScreen mainScreen) {
+	public void drawScreen (GuiScreen mainScreen) {
 		if (mainScreen == null) return;
-		if (this.reference == null) this.reference = mainScreen;
+		if (mainScreen instanceof ModMenuScreen) {
+			if (this.reference == null) this.reference = (ModMenuScreen) mainScreen;
+		} else if (mainScreen instanceof ModEscape) {
+			mainScreen = (ModEscape) mainScreen;
+			if (this.escapeReference == null) this.escapeReference = (ModEscape) mainScreen;
+		}
 		
 		ScaledResolution res = new ScaledResolution(mc);
 		mainScreen.drawRect(this.getX(), this.getY(), this.getX()+(int)(this.getWidth()*res.getScaledWidth()), this.getY()+(int) (this.getHeight()*res.getScaledHeight()), new Color(0, 0, 0, 110).getRGB());
@@ -112,7 +120,11 @@ public class SettingsScreen extends ScreenContainer {
 			ScreenPosition pos = elements.get(clickedElement);
 			double scaleFactor = getScale();
 			if (clickedElement instanceof GuiBackButton) {
-				clickedElement.onClick(mouseX-(int)((pos.getAbsoluteX()/scaleFactor)+this.getX()), mouseY - (int)((pos.getAbsoluteY()/scaleFactor) + this.getY()), this.reference);
+				if (this.reference != null) {
+					((GuiBackButton) clickedElement).onClick(mouseX-(int)((pos.getAbsoluteX()/scaleFactor)+this.getX()), mouseY - (int)((pos.getAbsoluteY()/scaleFactor) + this.getY()), this.reference);
+				} else {
+					((GuiBackButton) clickedElement).onClick(this.escapeReference);
+				}
 			} else {
 				clickedElement.onClick(mouseX-(int)((pos.getAbsoluteX()/scaleFactor)+this.getX()), mouseY - (int)((pos.getAbsoluteY()/scaleFactor) + this.getY()));
 			}

@@ -114,12 +114,7 @@ public class GuiColorPicker implements GuiElement {
 		/* ============================== */
 		
 	}
-
-	@Override
-	public void onClick(int newX, int newY, ModMenuScreen reference) {
-
-	}
-
+	
 	@Override
 	public void onDrag(int newX, int newY) {
 		int guiScale = mc.gameSettings.guiScale;

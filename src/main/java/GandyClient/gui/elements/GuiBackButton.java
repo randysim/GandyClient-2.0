@@ -6,6 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 import GandyClient.gui.GuiElement;
 import GandyClient.gui.hud.ScreenPosition;
+import GandyClient.gui.modmenu.ModEscape;
 import GandyClient.gui.modmenu.ModMenuScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -77,9 +78,12 @@ public class GuiBackButton implements GuiElement {
 		GL11.glPopMatrix();
 	}
 
-	@Override
 	public void onClick(int relativeX, int relativeY, ModMenuScreen reference) {
 		// TODO Auto-generated method stub
+		reference.setIsSetting(false);
+	}
+	
+	public void onClick (ModEscape reference) {
 		reference.setIsSetting(false);
 	}
 

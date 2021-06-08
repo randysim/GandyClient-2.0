@@ -99,12 +99,6 @@ public class GuiCheckBox implements GuiElement {
 	}
 
 	@Override
-	public void onClick(int relativeX, int relativeY, ModMenuScreen reference) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void saveSettings() {
 		// TODO Auto-generated method stub
 		SettingsManager.getInstance().updateSetting(this.mod, this.option, this.checked);
