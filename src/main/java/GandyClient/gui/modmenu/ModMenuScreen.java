@@ -189,4 +189,8 @@ public class ModMenuScreen extends GuiScreen {
 		
 		// test for settings buttons as well
 	}
+	
+	public String getSettingName () {
+		return this.settingName;
+	}
 }

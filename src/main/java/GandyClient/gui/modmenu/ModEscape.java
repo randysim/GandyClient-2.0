@@ -76,11 +76,17 @@ public class ModEscape extends GuiScreen {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException {
 		// exits settings page
 		if (keyCode == Keyboard.KEY_ESCAPE || keyCode == Keyboard.KEY_RSHIFT) {
-			if (this.isSetting)
+			if (this.isSetting) 
 				SettingInstances.getInstance().getSetting("Settings").onClose();
+			
 			SettingInstances.getInstance().register();
 			this.mc.displayGuiScreen(null);
 		}
+	}
+	
+	@Override
+	public void onGuiClosed() {
+		// actions here
 	}
 	
 	@Override

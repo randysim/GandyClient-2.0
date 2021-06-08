@@ -1,5 +1,6 @@
 package GandyClient.gui.hud;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import org.lwjgl.input.Keyboard;
 
 import GandyClient.Constants;
 import GandyClient.modules.ModDraggable;
+import GandyClient.modules.SettingsManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
@@ -44,7 +46,9 @@ public class HUDConfigScreen extends GuiScreen {
 		final float zBackup = this.zLevel;
 		this.zLevel = 200;
 		
-		this.drawHollowRect(0, 0, this.width - 1, this.height - 1, 0xFFFF0000);
+		Color mainColor = new Color((float)SettingsManager.getInstance().getSettingValue("ModSettings", "COLOR_RED")/(float)Constants.FLOAT_SCALE, (float) SettingsManager.getInstance().getSettingValue("ModSettings", "COLOR_GREEN")/(float)Constants.FLOAT_SCALE, (float)SettingsManager.getInstance().getSettingValue("ModSettings", "COLOR_BLUE")/(float)Constants.FLOAT_SCALE);
+		
+		this.drawHollowRect(0, 0, this.width - 1, this.height - 1, mainColor.getRGB());
 		
 		for (ModDraggable renderer : renderers.keySet()) {
 			ScreenPosition pos = renderers.get(renderer);
@@ -76,11 +80,11 @@ public class HUDConfigScreen extends GuiScreen {
 			if (!renderer.isUseGl()) {
 				GlStateManager.pushMatrix();
 				GlStateManager.scale(scaleFactor, scaleFactor, scaleFactor);
-				this.drawHollowRect(bufferPos.getAbsoluteX(), bufferPos.getAbsoluteY(), renderer.getWidth(), renderer.getHeight(), 0xFF00FFFF);
+				this.drawHollowRect(bufferPos.getAbsoluteX(), bufferPos.getAbsoluteY(), renderer.getWidth(), renderer.getHeight(), mainColor.getRGB());
 				renderer.renderDummy(bufferPos);
 				GlStateManager.popMatrix();
 			} else {
-				this.drawHollowRect(pos.getAbsoluteX(), pos.getAbsoluteY(), (int) (renderer.getWidth()*scaleFactor), (int) (renderer.getHeight()*scaleFactor), 0xFF00FFFF);
+				this.drawHollowRect(pos.getAbsoluteX(), pos.getAbsoluteY(), (int) (renderer.getWidth()*scaleFactor), (int) (renderer.getHeight()*scaleFactor), mainColor.getRGB());
 				renderer.renderDummy(pos);
 			}
 		}

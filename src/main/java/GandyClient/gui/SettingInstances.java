@@ -77,6 +77,12 @@ public class SettingInstances {
 				new GuiCheckBox("Use Real Time", "ModTimeChanger", "REAL_TIME")
 		);
 		settings.add(TimeChanger);
+		
+		SettingsScreen MainSettings = new SettingsScreen(0, 0, 1.0, 1.0, "Settings");
+		MainSettings.addComponents(
+				new GuiColorPicker("ModSettings")
+		);
+		settings.add(MainSettings);
 	}
 	
 	public SettingsScreen getSetting (String settingsName) {

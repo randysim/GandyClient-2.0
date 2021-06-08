@@ -5,6 +5,7 @@ import java.awt.Color;
 import org.lwjgl.opengl.GL11;
 
 import GandyClient.gui.GuiElement;
+import GandyClient.gui.SettingInstances;
 import GandyClient.gui.hud.ScreenPosition;
 import GandyClient.gui.modmenu.ModEscape;
 import GandyClient.gui.modmenu.ModMenuScreen;
@@ -81,10 +82,12 @@ public class GuiBackButton implements GuiElement {
 	public void onClick(int relativeX, int relativeY, ModMenuScreen reference) {
 		// TODO Auto-generated method stub
 		reference.setIsSetting(false);
+		SettingInstances.getInstance().getSetting(reference.getSettingName()).onClose();
 	}
 	
 	public void onClick (ModEscape reference) {
 		reference.setIsSetting(false);
+		SettingInstances.getInstance().getSetting("Settings").onClose();
 	}
 
 	@Override
