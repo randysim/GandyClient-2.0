@@ -44,8 +44,7 @@ public class ClientPhysic {
 	
 	public static void doRender(Entity entity, double x, double y, double z) {
 		float rotationSpeed = (float) SettingsManager.getSettingValue("ModItemPhysics", "ROTATION_SPEED")/(float)Constants.FLOAT_SCALE;
-		rotationSpeed /= 1000F;
-		rotation = (double) (System.nanoTime() - tick) / 250000000 * rotationSpeed;
+		rotation = (double) (System.nanoTime() - tick) / 2500000 * rotationSpeed;
 		
         if (!mc.inGameHasFocus) rotation = 0;
         EntityItem item = ((EntityItem) entity);
