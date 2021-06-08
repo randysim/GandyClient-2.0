@@ -2,20 +2,17 @@ package GandyClient.mixins.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import GandyClient.Client;
 import GandyClient.events.impl.ClientTickEvent;
-import GandyClient.events.impl.KeyEvent;
 import GandyClient.gui.SplashProgress;
 import GandyClient.utils.ClientLogger;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.settings.GameSettings;
+import net.minecraft.world.WorldSettings;
 
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
@@ -53,6 +50,11 @@ public abstract class MinecraftMixin {
     private void loadModels (CallbackInfo info) {
     	ClientLogger.info("Loading Models");
     	SplashProgress.setProgress(3, "Loading Models");
+    }
+    
+    @Inject(method = "launchIntegratedServer", at = @At("RETURN"))
+    private void singlePlayerRP (String folderName, String worldName, WorldSettings worldSettingsIn, CallbackInfo info) {
+    	Client.getInstance().getRichPresence().update("Singleplayer World", "In Game");
     }
     
 }

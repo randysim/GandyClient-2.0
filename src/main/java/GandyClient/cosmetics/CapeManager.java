@@ -18,7 +18,6 @@ public class CapeManager {
 	public CapeManager () {}
 	
 	public void addCape (String playerName, ResourceLocation capeLocation) {
-		System.out.println(playerName + " registered Cape");
 		this.capeMap.put(playerName.toLowerCase(), capeLocation);
 	}
 	public ResourceLocation getCape (String playerName) {

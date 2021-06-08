@@ -9,6 +9,8 @@
 	"client.MinecraftMixin",
 	"client.gui.GuiMainMenuMixin",
 	"client.gui.GuiNewChatMixin",
+	"client.gui.GuiMultiplayerMixin",
+	"client.multiplayer.GuiConnectingMixin",
 	"client.renderer.EntityRendererMixin",
 	"client.renderer.IEntityRendererMixin",
 	"client.renderer.ItemRendererMixin",
