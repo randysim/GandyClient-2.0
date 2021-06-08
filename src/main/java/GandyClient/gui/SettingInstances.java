@@ -70,6 +70,13 @@ public class SettingInstances {
 			new GuiColorPicker("ModBlockOverlay")
 		);	
 		settings.add(BlockOverlay);
+		
+		SettingsScreen TimeChanger = new SettingsScreen(0, 0, 1.0, 1.0, "Time Changer");
+		TimeChanger.addComponents( 
+				new GuiSlider("Time", "ModTimeChanger", "TIME", 0.01F, 1F),
+				new GuiCheckBox("Use Real Time", "ModTimeChanger", "REAL_TIME")
+		);
+		settings.add(TimeChanger);
 	}
 	
 	public SettingsScreen getSetting (String settingsName) {

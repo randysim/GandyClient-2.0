@@ -27,21 +27,6 @@ public class GuiColorPicker implements GuiElement {
 		this.font = mc.fontRendererObj;
 		this.mod = modName;
 		
-		int guiScale = mc.gameSettings.guiScale;
-		double scaleFactor = 1;
-		
-		switch (guiScale) {
-		case 1:
-			scaleFactor = 4;
-			break;
-		case 2:
-			scaleFactor = 2;
-			break;
-		case 3:
-			scaleFactor = 1.33;
-			break;
-		}
-		
 		this.red = new GuiSlider("Red", modName, "COLOR_RED", 0.1F, 1.0F);
 		this.blue = new GuiSlider("Green", modName, "COLOR_GREEN", 0.1F, 1.0F);
 		this.green = new GuiSlider("Blue", modName, "COLOR_BLUE", 0.1F, 1.0F);

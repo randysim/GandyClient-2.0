@@ -5,6 +5,7 @@
   "refmap": "mixin.gandyclient.refmap.json",
   "verbose": true,
   "mixins": [
+	"world.WorldMixin",
 	"client.MinecraftMixin",
 	"client.gui.GuiMainMenuMixin",
 	"client.gui.GuiNewChatMixin",

@@ -60,7 +60,7 @@ public class SettingsScreen extends ScreenContainer {
 					gElement, 
 					ScreenPosition.fromAbsolute(
 							this.getX() + (int)(this.getScaledWidth()/20), 
-							this.getY() + currentY + ((int)(this.getScaledHeight()/20)*count) + topPadding
+							this.getY() + (int)(currentY * getScale()) + ((int)(this.getScaledHeight()/20)*count) + topPadding
 							)
 					);
 			count++;

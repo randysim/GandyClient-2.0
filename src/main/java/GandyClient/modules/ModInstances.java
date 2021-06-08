@@ -8,6 +8,7 @@ import GandyClient.modules.impl.ModKeystrokes;
 import GandyClient.modules.impl.ModOldAnimations;
 import GandyClient.modules.impl.ModPerspective;
 import GandyClient.modules.impl.ModPotionEffects;
+import GandyClient.modules.impl.ModTimeChanger;
 import GandyClient.modules.impl.ModXYZ;
 import GandyClient.modules.impl.autogg.ModAutoGG;
 import GandyClient.modules.impl.togglesprintsneak.ModToggleSprintSneak;
@@ -34,6 +35,8 @@ private static ModFPS modFPS;
 	private static ModOldAnimations modOldAnimations;
 	
 	private static ModBlockOverlay modBlockOverlay;
+	
+	private static ModTimeChanger modTimeChanger;
 	
 	public static void register (ModuleManager api) {		
 		modKeystrokes = new ModKeystrokes();
@@ -78,6 +81,10 @@ private static ModFPS modFPS;
 		modBlockOverlay = new ModBlockOverlay();
 		api.register(modBlockOverlay);
 		SettingsManager.getInstance().register(modBlockOverlay.getSettings());
+		
+		modTimeChanger = new ModTimeChanger();
+		api.register(modTimeChanger);
+		SettingsManager.getInstance().register(modTimeChanger.getSettings());
 	}
 	
 	public static ModToggleSprintSneak getModToggleSprintSneak () {
