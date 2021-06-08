@@ -78,6 +78,12 @@ public class SettingInstances {
 		);
 		settings.add(TimeChanger);
 		
+		SettingsScreen ItemPhysics =  new SettingsScreen(0, 0, 1.0, 1.0, "Item Physics");
+		ItemPhysics.addComponents(
+				new GuiSlider("Rotation Speed", "ModItemPhysics", "ROTATION_SPEED", 0.01F, 1F)
+		);
+		settings.add(ItemPhysics);
+		
 		SettingsScreen MainSettings = new SettingsScreen(0, 0, 1.0, 1.0, "Settings");
 		MainSettings.addComponents(
 				new GuiColorPicker("ModSettings")

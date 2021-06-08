@@ -12,6 +12,7 @@ import GandyClient.modules.impl.ModSettings;
 import GandyClient.modules.impl.ModTimeChanger;
 import GandyClient.modules.impl.ModXYZ;
 import GandyClient.modules.impl.autogg.ModAutoGG;
+import GandyClient.modules.impl.itemphysics.ModItemPhysics;
 import GandyClient.modules.impl.togglesprintsneak.ModToggleSprintSneak;
 import net.minecraft.client.Minecraft;
 
@@ -40,6 +41,8 @@ private static ModFPS modFPS;
 	private static ModTimeChanger modTimeChanger;
 	
 	private static ModSettings modSettings;
+	
+	private static ModItemPhysics modItemPhysics;
 	
 	public static void register (ModuleManager api) {		
 		modKeystrokes = new ModKeystrokes();
@@ -88,6 +91,10 @@ private static ModFPS modFPS;
 		modTimeChanger = new ModTimeChanger();
 		api.register(modTimeChanger);
 		SettingsManager.getInstance().register(modTimeChanger.getSettings());
+		
+		modItemPhysics = new ModItemPhysics();
+		api.register(modItemPhysics);
+		SettingsManager.getInstance().register(modItemPhysics.getSettings());
 		
 		modSettings = new ModSettings();
 		SettingsManager.getInstance().register(modSettings.getSettings());

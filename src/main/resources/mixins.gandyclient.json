@@ -15,6 +15,7 @@
 	"client.renderer.IEntityRendererMixin",
 	"client.renderer.ItemRendererMixin",
 	"client.renderer.RenderGlobalMixin",
+	"client.renderer.entity.RenderEntityItemMixin",
 	"client.settings.GameSettingsMixin",
         "client.settings.IKeyBindingMixin",
 	"client.renderer.entity.layers.LayerCapeMixin",
