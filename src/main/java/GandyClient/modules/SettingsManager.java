@@ -6,18 +6,18 @@ import com.google.common.collect.Sets;
 
 public class SettingsManager {
 	private static SettingsManager instance = null;
-	private static Set<Setting> settings = Sets.newHashSet();
+	private Set<Setting> settings = Sets.newHashSet();
 	
 	public static SettingsManager getInstance () {
 		if (instance == null) instance = new SettingsManager();
 		return instance;
 	}
 	
-	public static void register (Setting setting) {
+	public void register (Setting setting) {
 		settings.add(setting);
 	}
 	
-	public static void updateSetting (String modName, String optionName, int value) {
+	public void updateSetting (String modName, String optionName, int value) {
 		String mod = modName.toUpperCase(); // this is simple name
 		String property = optionName.toUpperCase();
 		
@@ -31,9 +31,9 @@ public class SettingsManager {
 		}
 	}
 	
-	public static int getSettingValue (String modName, String optionName) {
+	public int getSettingValue (String modName, String optionName) {
 		String mod = modName.toUpperCase();
-		String property = optionName.toUpperCase();
+		
 		for (Setting setting : settings) {
 			if (setting == null) {
 				// no setting for this mod

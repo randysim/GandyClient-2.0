@@ -100,8 +100,8 @@ public abstract class ItemRendererMixin {
 	        GlStateManager.rotate(60.0F, 0.0F, 1.0F, 0.0F);
 	        
 	        if (
-	        		SettingsManager.getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
-	        		SettingsManager.getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
+	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
+	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
 	        ) {
 	        	GlStateManager.translate(-0.5F, 0.2F, 0.0F);
 	        }
@@ -214,8 +214,8 @@ public abstract class ItemRendererMixin {
 
                     case 4:
                     	if (
-            	        		SettingsManager.getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
-            	        		SettingsManager.getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
+            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
+            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
             	        ) {
                     		this.transformFirstPersonItem(0.2F, f1);
                     	} else {

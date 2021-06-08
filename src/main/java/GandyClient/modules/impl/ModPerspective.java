@@ -1,6 +1,5 @@
 package GandyClient.modules.impl;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import GandyClient.events.EventTarget;

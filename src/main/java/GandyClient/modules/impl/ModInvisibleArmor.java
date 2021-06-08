@@ -1,29 +1,19 @@
 package GandyClient.modules.impl;
 
-import GandyClient.Constants;
 import GandyClient.gui.hud.ScreenPosition;
 import GandyClient.modules.ModDraggable;
 import GandyClient.modules.Setting;
 
-public class ModTimeChanger extends ModDraggable {
-	private String type = "Time Changer";
+public class ModInvisibleArmor extends ModDraggable {
+	private String type = "Invisible Armor";
 	private boolean isUseGl = false;
 	private Setting settings;
 	
-	public ModTimeChanger () {
+	public ModInvisibleArmor () {
 		super();
 		this.settings = new Setting(this.getClass().getSimpleName());
-		
 		if (!settings.getSettings().containsKey("ENABLED")) {
 			settings.updateSetting("ENABLED", 0);
-		}
-		
-		if (!settings.getSettings().containsKey("TIME")) {
-			settings.updateSetting("TIME", (int) (0.01F * Constants.FLOAT_SCALE));
-		}
-		
-		if (!settings.getSettings().containsKey("REAL_TIME")) {
-			settings.updateSetting("REAL_TIME", 0);
 		}
 	}
 	
@@ -46,7 +36,6 @@ public class ModTimeChanger extends ModDraggable {
 
 	@Override
 	public void render(ScreenPosition pos) {
-		// TODO Auto-generated method stub
 		
 	}
 

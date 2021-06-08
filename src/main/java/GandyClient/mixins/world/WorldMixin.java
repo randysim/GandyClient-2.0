@@ -18,11 +18,11 @@ public abstract class WorldMixin {
 	
 	@Overwrite
 	public void setWorldTime (long time) {
-		if (SettingsManager.getSettingValue("ModTimeChanger", "ENABLED") == 1) {
-			if (SettingsManager.getSettingValue("ModTimeChanger", "REAL_TIME") == 1) {
+		if (SettingsManager.getInstance().getSettingValue("ModTimeChanger", "ENABLED") == 1) {
+			if (SettingsManager.getInstance().getSettingValue("ModTimeChanger", "REAL_TIME") == 1) {
 				this.worldInfo.setWorldTime((long) (((float)(LocalTime.now().getHour() + LocalTime.now().getMinute())/60F) * 1000F));
 			} else {
-				this.worldInfo.setWorldTime((long) (((float)SettingsManager.getSettingValue("ModTimeChanger", "TIME")/(float)Constants.FLOAT_SCALE) * 21000F));
+				this.worldInfo.setWorldTime((long) (((float)SettingsManager.getInstance().getSettingValue("ModTimeChanger", "TIME")/(float)Constants.FLOAT_SCALE) * 21000F));
 			}
 		} else {
 			this.worldInfo.setWorldTime(time);

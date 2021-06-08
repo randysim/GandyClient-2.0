@@ -9,14 +9,10 @@ import GandyClient.modules.SettingsManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
-import net.minecraft.client.renderer.entity.RenderEntityItem;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -43,7 +39,7 @@ public class ClientPhysic {
 	}
 	
 	public static void doRender(Entity entity, double x, double y, double z) {
-		float rotationSpeed = (float) SettingsManager.getSettingValue("ModItemPhysics", "ROTATION_SPEED")/(float)Constants.FLOAT_SCALE;
+		float rotationSpeed = (float) SettingsManager.getInstance().getSettingValue("ModItemPhysics", "ROTATION_SPEED")/(float)Constants.FLOAT_SCALE;
 		rotation = (double) (System.nanoTime() - tick) / 2500000 * rotationSpeed;
 		
         if (!mc.inGameHasFocus) rotation = 0;

@@ -7,7 +7,6 @@ import com.google.common.collect.Sets;
 import GandyClient.events.EventManager;
 import GandyClient.gui.hud.HUDManager;
 import GandyClient.gui.modmenu.ModMenuScreen;
-import GandyClient.mixins.client.settings.IKeyBindingMixin;
 import net.minecraft.client.Minecraft;
 
 public class ModuleManager {

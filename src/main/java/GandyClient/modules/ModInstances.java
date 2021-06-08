@@ -4,6 +4,7 @@ import GandyClient.gui.hud.HUDManager;
 import GandyClient.modules.impl.ModBlockOverlay;
 import GandyClient.modules.impl.ModFPS;
 import GandyClient.modules.impl.ModFullBright;
+import GandyClient.modules.impl.ModInvisibleArmor;
 import GandyClient.modules.impl.ModKeystrokes;
 import GandyClient.modules.impl.ModOldAnimations;
 import GandyClient.modules.impl.ModPerspective;
@@ -40,9 +41,11 @@ private static ModFPS modFPS;
 	
 	private static ModTimeChanger modTimeChanger;
 	
-	private static ModSettings modSettings;
-	
 	private static ModItemPhysics modItemPhysics;
+	
+	private static ModInvisibleArmor modInvisibleArmor = new ModInvisibleArmor();
+	
+	private static ModSettings modSettings;
 	
 	public static void register (ModuleManager api) {		
 		modKeystrokes = new ModKeystrokes();
@@ -95,6 +98,10 @@ private static ModFPS modFPS;
 		modItemPhysics = new ModItemPhysics();
 		api.register(modItemPhysics);
 		SettingsManager.getInstance().register(modItemPhysics.getSettings());
+		
+		modInvisibleArmor = new ModInvisibleArmor();
+		api.register(modInvisibleArmor);
+		SettingsManager.getInstance().register(modInvisibleArmor.getSettings());
 		
 		modSettings = new ModSettings();
 		SettingsManager.getInstance().register(modSettings.getSettings());

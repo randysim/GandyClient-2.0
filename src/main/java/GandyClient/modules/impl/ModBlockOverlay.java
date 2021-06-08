@@ -1,7 +1,5 @@
 package GandyClient.modules.impl;
 
-import java.awt.Color;
-
 import org.lwjgl.opengl.GL11;
 
 import GandyClient.Constants;

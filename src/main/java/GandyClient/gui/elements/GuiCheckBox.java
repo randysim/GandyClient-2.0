@@ -6,7 +6,6 @@ import org.lwjgl.opengl.GL11;
 
 import GandyClient.gui.GuiElement;
 import GandyClient.gui.hud.ScreenPosition;
-import GandyClient.gui.modmenu.ModMenuScreen;
 import GandyClient.modules.SettingsManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

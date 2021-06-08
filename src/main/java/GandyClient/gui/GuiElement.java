@@ -1,7 +1,6 @@
 package GandyClient.gui;
 
 import GandyClient.gui.hud.ScreenPosition;
-import GandyClient.gui.modmenu.ModMenuScreen;
 
 public interface GuiElement {
 	int getWidth();
