@@ -84,6 +84,15 @@ public class SettingInstances {
 		);
 		settings.add(ItemPhysics);
 		
+		SettingsScreen InvisibleArmor = new SettingsScreen(0, 0, 1.0, 1.0, "Invisible Armor");
+		InvisibleArmor.addComponents(
+				new GuiCheckBox("Show Headband", "ModInvisibleArmor", "HEADBAND"),
+				new GuiCheckBox("Show Iron Armor", "ModInvisibleArmor", "SHOW_IRON"),
+				new GuiCheckBox("Show Gold Armor", "ModInvisibleArmor", "SHOW_GOLD"),
+				new GuiCheckBox("Show Diamond Armor", "ModInvisibleArmor", "SHOW_DIAMOND")
+		);
+		settings.add(InvisibleArmor);
+		
 		SettingsScreen MainSettings = new SettingsScreen(0, 0, 1.0, 1.0, "Settings");
 		MainSettings.addComponents(
 				new GuiColorPicker("ModSettings")

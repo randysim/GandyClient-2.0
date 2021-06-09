@@ -24,6 +24,14 @@ public abstract class LayerArmorBaseMixin {
     {
 		boolean flag = p_177178_1_.getArmorMaterial().getName().equalsIgnoreCase(ItemArmor.ArmorMaterial.LEATHER.getName()) && SettingsManager.getInstance().getSettingValue("ModInvisibleArmor", "ENABLED") == 1;
         String s = String.format((flag ? "" : "textures/models/armor/") + "%s_layer_%d%s.png", new Object[] {p_177178_1_.getArmorMaterial().getName(), Integer.valueOf(p_177178_2_ ? 2 : 1), p_177178_3_ == null ? "" : String.format("_%s", new Object[]{p_177178_3_})});
+        
+        if (SettingsManager.getInstance().getSettingValue("ModInvisibleArmor", "ENABLED") == 1 && !flag) {
+        	// cases for non leather armor
+        	if (SettingsManager.getInstance().getSettingValue("ModInvisibleArmor", "SHOW_" + p_177178_1_.getArmorMaterial().getName().toUpperCase()) == 0) {
+        		s = "leather_layer_1_overlay.png";
+        	}
+        }
+       
         ResourceLocation resourcelocation = (ResourceLocation)ARMOR_TEXTURE_RES_MAP.get(s);
 
         if (resourcelocation == null)

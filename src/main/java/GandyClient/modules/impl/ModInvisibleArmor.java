@@ -15,6 +15,22 @@ public class ModInvisibleArmor extends ModDraggable {
 		if (!settings.getSettings().containsKey("ENABLED")) {
 			settings.updateSetting("ENABLED", 0);
 		}
+		
+		if (!settings.getSettings().containsKey("HEADBAND")) {
+			settings.updateSetting("HEADBAND", 1);
+		}
+		
+		if (!settings.getSettings().containsKey("SHOW_IRON")) {
+			settings.updateSetting("SHOW_IRON", 0);
+		}
+		
+		if (!settings.getSettings().containsKey("SHOW_GOLD")) {
+			settings.updateSetting("SHOW_GOLD", 0);
+		}
+		
+		if (!settings.getSettings().containsKey("SHOW_DIAMOND")) {
+			settings.updateSetting("SHOW_DIAMOND", 0);
+		}
 	}
 	
 	@Override
