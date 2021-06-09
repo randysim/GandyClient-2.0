@@ -143,6 +143,7 @@ public class GuiSlider implements GuiElement {
 		currentFloat *= maxValue;
 	
 		this.currentValue = Math.max(minValue, Math.min(currentFloat, maxValue));
+		this.saveSettings();
 	}
 
 	@Override

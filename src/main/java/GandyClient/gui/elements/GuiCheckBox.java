@@ -82,6 +82,7 @@ public class GuiCheckBox implements GuiElement {
 		font.drawString(optionDesc, (int) (pos.getAbsoluteX()/scaleFactor), (int) (pos.getAbsoluteY()/scaleFactor), -1);	
 		
 		GL11.glPopMatrix();
+		this.saveSettings();
 	}
 
 	@Override

@@ -140,6 +140,7 @@ public class GuiColorPicker implements GuiElement {
 				green.onDrag(newX, newY);
 			}
 		} 
+		this.saveSettings();
 	}
 
 	@Override
