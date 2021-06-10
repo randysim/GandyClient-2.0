@@ -1,11 +1,10 @@
 package GandyClient.utils;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
-
-import org.apache.commons.io.FilenameUtils;
 
 import com.google.gson.JsonObject;
 
@@ -17,14 +16,16 @@ import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
 
 /* MODIFIED FROM OPTIFINE cape.utils */
 public class CapeUtils
-{
-    public static void downloadCape(final AbstractClientPlayer player)
+{	
+    public static void downloadCape(final AbstractClientPlayer player, int capeColor)
     {
         String username = player.getName();
+        boolean isColor = capeColor != 0;
 
         if (username != null && !username.isEmpty())
         {
@@ -46,15 +47,22 @@ public class CapeUtils
         		return;
         	}
 
-            String mptHash = FilenameUtils.getBaseName(ofCapeUrl);
-            final ResourceLocation rl = new ResourceLocation("capeof/" + mptHash);
+            // String mptHash = FilenameUtils.getBaseName(ofCapeUrl);
+            ResourceLocation rlTemp = null;
+            if (!isColor) {
+            	rlTemp = new ResourceLocation("capeof/" + username);
+            } else {
+            	rlTemp = new ResourceLocation(Integer.toString(capeColor) + "_capeof/" + username);
+            }
+            
+            final ResourceLocation rl = rlTemp; 
+            
             TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
             ITextureObject tex = textureManager.getTexture(rl);
 
             if (tex != null && tex instanceof ThreadDownloadImageData)
             {
             	// checks if texture is already stored to prevent loading it again
-            	Client.getInstance().getCapeManager().addCape(username, rl);
                 return;
             }
 
@@ -63,16 +71,31 @@ public class CapeUtils
                 ImageBufferDownload ibd = new ImageBufferDownload();
                 public BufferedImage parseUserSkin(BufferedImage var1)
                 {
-                    return CapeUtils.parseCape(var1);
+                    BufferedImage cutOut = parseCape(var1);
+                    
+                    if (isColor) {
+                    	return colorCape(cutOut, capeColor);
+                    } else {
+                    	return cutOut;
+                    }
                 }
                 public void skinAvailable()
-                {
-                	Client.getInstance().getCapeManager().addCape(username, rl);
+                {		
+                		if (isColor) {
+                			Client.getInstance().getCapeManager().addColoredCape(username, capeColor, rl);
+                		} else {
+                			Client.getInstance().getCapeManager().addCape(username, rl);
+                		}
                 }
 
             };
             ThreadDownloadImageData textureCape = new ThreadDownloadImageData((File)null, ofCapeUrl, (ResourceLocation)null, iib);
             textureManager.loadTexture(rl, textureCape);
+    		if (isColor) {
+    			Client.getInstance().getCapeManager().addColoredCape(username, capeColor, rl);
+    		} else {
+    			Client.getInstance().getCapeManager().addCape(username, rl);
+    		}
         }
     }
 
@@ -88,6 +111,28 @@ public class CapeUtils
         }
 
         BufferedImage imgNew = new BufferedImage(imageWidth, imageHeight, 2);
+        Graphics g = imgNew.getGraphics();
+        g.drawImage(img, 0, 0, (ImageObserver)null);
+        g.dispose();
+        return imgNew;
+    }
+    
+    public static BufferedImage colorCape (BufferedImage img, int newColor) {
+    	// only works for capes with a white background as of now
+    	
+    	int h = img.getHeight();
+    	int w = img.getWidth();
+    	
+    	for (int hI = 0; hI < h; ++hI) {
+    		for (int wI = 0; wI < w; ++wI) {
+    			
+    			if (img.getRGB(wI, hI) == -1) {
+    				img.setRGB(wI, hI, new Color(newColor).getRGB());
+    			}
+    		}
+    	}
+    	
+    	BufferedImage imgNew = new BufferedImage(w, h, 2);
         Graphics g = imgNew.getGraphics();
         g.drawImage(img, 0, 0, (ImageObserver)null);
         g.dispose();

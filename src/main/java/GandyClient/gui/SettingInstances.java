@@ -6,6 +6,7 @@ import com.google.common.collect.Sets;
 
 import GandyClient.gui.elements.GuiCheckBox;
 import GandyClient.gui.elements.GuiColorPicker;
+import GandyClient.gui.elements.GuiLabel;
 import GandyClient.gui.elements.GuiSlider;
 import GandyClient.gui.modmenu.screens.SettingsScreen;
 
@@ -86,12 +87,19 @@ public class SettingInstances {
 		
 		SettingsScreen InvisibleArmor = new SettingsScreen(0, 0, 1.0, 1.0, "Invisible Armor");
 		InvisibleArmor.addComponents(
+				new GuiLabel("Headband Credit: oChubby"),
 				new GuiCheckBox("Show Headband", "ModInvisibleArmor", "HEADBAND"),
 				new GuiCheckBox("Show Iron Armor", "ModInvisibleArmor", "SHOW_IRON"),
 				new GuiCheckBox("Show Gold Armor", "ModInvisibleArmor", "SHOW_GOLD"),
 				new GuiCheckBox("Show Diamond Armor", "ModInvisibleArmor", "SHOW_DIAMOND")
 		);
 		settings.add(InvisibleArmor);
+		
+		SettingsScreen CapeModifier = new SettingsScreen(0, 0, 1.0, 1.0, "Cape Modifier");
+		CapeModifier.addComponents(
+				new GuiCheckBox("Team Color Cape ( Bedwars Only )", "ModCapeModifier", "TEAM_COLOR_CAPE")
+		);
+		settings.add(CapeModifier);
 		
 		SettingsScreen MainSettings = new SettingsScreen(0, 0, 1.0, 1.0, "Settings");
 		MainSettings.addComponents(

@@ -19,6 +19,6 @@ public abstract class AbstractClientPlayerMixin {
 		 so tried converting to object and then to abstractclientplayer to get the reference
 		 and i think it works?
 		 */
-		CapeUtils.downloadCape((AbstractClientPlayer) (Object) this); 
+		CapeUtils.downloadCape((AbstractClientPlayer) (Object) this, 0); 
 	}
 }

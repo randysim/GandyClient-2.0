@@ -5,11 +5,15 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 import GandyClient.Client;
+import GandyClient.modules.SettingsManager;
+import GandyClient.utils.CapeUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.entity.layers.LayerCape;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 @Mixin(LayerCape.class)
 public abstract class LayerCapeMixin {
@@ -20,8 +24,28 @@ public abstract class LayerCapeMixin {
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale) {
 		if (entitylivingbaseIn.hasPlayerInfo() && !entitylivingbaseIn.isInvisible() && Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()) != null)
         {
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()));
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			
+			// chestplate
+			int slot = 2;
+			if (
+				entitylivingbaseIn.getCurrentArmor(slot) != null && 
+				entitylivingbaseIn.getCurrentArmor(slot).getItem() != null &&
+				SettingsManager.getInstance().getSettingValue("ModCapeModifier", "ENABLED") == 1 &&
+				SettingsManager.getInstance().getSettingValue("ModCapeModifier", "TEAM_COLOR_CAPE") == 1
+			) {
+				ItemArmor chestplate = (ItemArmor) entitylivingbaseIn.getCurrentArmor(slot).getItem();
+				if (chestplate.getArmorMaterial().getName().equalsIgnoreCase(ItemArmor.ArmorMaterial.LEATHER.getName())) {
+					int color = chestplate.getColor(entitylivingbaseIn.getCurrentArmor(slot));
+					if (Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color) == null) CapeUtils.downloadCape(entitylivingbaseIn, color);
+					this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color));
+				}
+			} else {
+				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()));
+			}
+			
+            
+            
             GlStateManager.pushMatrix();
             GlStateManager.translate(0.0F, 0.0F, 0.125F);
             double d0 = entitylivingbaseIn.prevChasingPosX + (entitylivingbaseIn.chasingPosX - entitylivingbaseIn.prevChasingPosX) * (double)partialTicks - (entitylivingbaseIn.prevPosX + (entitylivingbaseIn.posX - entitylivingbaseIn.prevPosX) * (double)partialTicks);
