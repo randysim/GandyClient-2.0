@@ -7,9 +7,12 @@
   "mixins": [
 	"world.WorldMixin",
 	"client.MinecraftMixin",
+	"client.gui.GuiMixin",
 	"client.gui.GuiMainMenuMixin",
 	"client.gui.GuiNewChatMixin",
 	"client.gui.GuiMultiplayerMixin",
+	"client.gui.GuiButtonMixin",
+	"client.gui.GuiScreenMixin",
 	"client.multiplayer.GuiConnectingMixin",
 	"client.renderer.EntityRendererMixin",
 	"client.renderer.IEntityRendererMixin",
