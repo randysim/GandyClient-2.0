@@ -131,7 +131,14 @@ public class CapeUtils
     		for (int wI = 0; wI < w; ++wI) {
     			
     			if (img.getRGB(wI, hI) == -1) {
-    				img.setRGB(wI, hI, new Color(newColor).getRGB());
+    				Color originalColor = new Color(newColor);
+    				double colorScale = 1.25;
+    				Color lightColor = new Color(
+    						Math.min((int) ((double) originalColor.getRed() + (colorScale * 255D)), 255), 
+    						Math.min((int) ((double) originalColor.getGreen() + (colorScale * 255D)), 255), 
+    						Math.min((int) ((double) originalColor.getBlue() + (colorScale * 255D)), 255)
+    					);
+    				img.setRGB(wI, hI, lightColor.getRGB());
     			}
     		}
     	}
