@@ -61,7 +61,7 @@ public class CapeUtils
 
             if (
             	(isColor && Client.getInstance().getCapeManager().getColoredCape(username, capeColor) != null) ||
-            	Client.getInstance().getCapeManager().getCape(username) != null
+            	(!isColor && Client.getInstance().getCapeManager().getCape(username) != null)
             )
             {
             	// checks if texture is already stored to prevent loading it again
