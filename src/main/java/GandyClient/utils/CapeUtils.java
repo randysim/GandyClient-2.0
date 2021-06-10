@@ -132,7 +132,7 @@ public class CapeUtils
     			
     			if (img.getRGB(wI, hI) == -1) {
     				Color originalColor = new Color(newColor);
-    				double colorScale = 1.25;
+    				double colorScale = 0.25;
     				Color lightColor = new Color(
     						Math.min((int) ((double) originalColor.getRed() + (colorScale * 255D)), 255), 
     						Math.min((int) ((double) originalColor.getGreen() + (colorScale * 255D)), 255), 
