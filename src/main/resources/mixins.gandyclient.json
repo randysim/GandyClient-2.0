@@ -22,7 +22,6 @@
 	"client.settings.GameSettingsMixin",
         "client.settings.IKeyBindingMixin",
 	"client.renderer.entity.layers.LayerCapeMixin",
-	"client.renderer.entity.layers.LayerArmorBaseMixin",
-	"client.entity.AbstractClientPlayerMixin"
+	"client.renderer.entity.layers.LayerArmorBaseMixin"
    ]
 }

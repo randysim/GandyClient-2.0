@@ -59,14 +59,12 @@ public class CapeUtils
             TextureManager textureManager = Minecraft.getMinecraft().getTextureManager();
             ITextureObject tex = textureManager.getTexture(rl);
 
-            if (tex != null && tex instanceof ThreadDownloadImageData)
+            if (
+            	(isColor && Client.getInstance().getCapeManager().getColoredCape(username, capeColor) != null) ||
+            	Client.getInstance().getCapeManager().getCape(username) != null
+            )
             {
             	// checks if texture is already stored to prevent loading it again
-        		if (isColor) {
-        			Client.getInstance().getCapeManager().addColoredCape(username, capeColor, rl);
-        		} else {
-        			Client.getInstance().getCapeManager().addCape(username, rl);
-        		}
                 return;
             }
 
@@ -94,12 +92,14 @@ public class CapeUtils
 
             };
             ThreadDownloadImageData textureCape = new ThreadDownloadImageData((File)null, ofCapeUrl, (ResourceLocation)null, iib);
-            textureManager.loadTexture(rl, textureCape);
+            
     		if (isColor) {
     			Client.getInstance().getCapeManager().addColoredCape(username, capeColor, rl);
     		} else {
     			Client.getInstance().getCapeManager().addCape(username, rl);
     		}
+    		
+            textureManager.loadTexture(rl, textureCape);
         }
     }
 
