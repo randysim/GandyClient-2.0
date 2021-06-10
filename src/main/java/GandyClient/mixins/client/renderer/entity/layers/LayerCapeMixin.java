@@ -41,6 +41,7 @@ public abstract class LayerCapeMixin {
 					this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color));
 				}
 			} else {
+				if (Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()) == null) CapeUtils.downloadCape(entitylivingbaseIn, 0);
 				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()));
 			}
 			
