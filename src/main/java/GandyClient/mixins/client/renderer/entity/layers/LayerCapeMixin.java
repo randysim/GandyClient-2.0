@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.client.renderer.entity.layers.LayerCape;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
 
 @Mixin(LayerCape.class)
 public abstract class LayerCapeMixin {
@@ -31,15 +30,14 @@ public abstract class LayerCapeMixin {
 			if (
 				entitylivingbaseIn.getCurrentArmor(slot) != null && 
 				entitylivingbaseIn.getCurrentArmor(slot).getItem() != null &&
+				((ItemArmor) entitylivingbaseIn.getCurrentArmor(slot).getItem()).getArmorMaterial().getName().equalsIgnoreCase(ItemArmor.ArmorMaterial.LEATHER.getName()) &&
 				SettingsManager.getInstance().getSettingValue("ModCapeModifier", "ENABLED") == 1 &&
 				SettingsManager.getInstance().getSettingValue("ModCapeModifier", "TEAM_COLOR_CAPE") == 1
 			) {
 				ItemArmor chestplate = (ItemArmor) entitylivingbaseIn.getCurrentArmor(slot).getItem();
-				if (chestplate.getArmorMaterial().getName().equalsIgnoreCase(ItemArmor.ArmorMaterial.LEATHER.getName())) {
-					int color = chestplate.getColor(entitylivingbaseIn.getCurrentArmor(slot));
-					if (Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color) == null) CapeUtils.downloadCape(entitylivingbaseIn, color);
-					this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color));
-				}
+				int color = chestplate.getColor(entitylivingbaseIn.getCurrentArmor(slot));
+				if (Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color) == null) CapeUtils.downloadCape(entitylivingbaseIn, color);
+				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getColoredCape(entitylivingbaseIn.getName(), color));
 			} else {
 				if (Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()) == null) CapeUtils.downloadCape(entitylivingbaseIn, 0);
 				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()));
