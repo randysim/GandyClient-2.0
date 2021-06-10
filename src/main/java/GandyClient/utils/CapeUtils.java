@@ -16,7 +16,6 @@ import net.minecraft.client.renderer.ImageBufferDownload;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.util.ResourceLocation;
 
 /* MODIFIED FROM OPTIFINE cape.utils */
@@ -24,7 +23,7 @@ public class CapeUtils
 {	
     public static void downloadCape(final AbstractClientPlayer player, int capeColor)
     {
-        String username = player.getName();
+    	String username = player.getName();
         boolean isColor = capeColor != 0;
 
         if (username != null && !username.isEmpty())
@@ -52,7 +51,7 @@ public class CapeUtils
             if (!isColor) {
             	rlTemp = new ResourceLocation("capeof/" + username);
             } else {
-            	rlTemp = new ResourceLocation(Integer.toString(capeColor) + "_capeof/" + username);
+            	rlTemp = new ResourceLocation(Integer.toString(capeColor) + "_colorcapeof/" + username);
             }
             
             final ResourceLocation rl = rlTemp; 
@@ -63,6 +62,11 @@ public class CapeUtils
             if (tex != null && tex instanceof ThreadDownloadImageData)
             {
             	// checks if texture is already stored to prevent loading it again
+        		if (isColor) {
+        			Client.getInstance().getCapeManager().addColoredCape(username, capeColor, rl);
+        		} else {
+        			Client.getInstance().getCapeManager().addCape(username, rl);
+        		}
                 return;
             }
 

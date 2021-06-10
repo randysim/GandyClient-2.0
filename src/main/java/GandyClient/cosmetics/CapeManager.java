@@ -2,7 +2,6 @@ package GandyClient.cosmetics;
 
 import java.util.HashMap;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
 public class CapeManager {
