@@ -22,7 +22,7 @@ public abstract class LayerCapeMixin {
 	
 	@Overwrite
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale) {
-		if (entitylivingbaseIn.hasPlayerInfo() && !entitylivingbaseIn.isInvisible() && Client.getInstance().getCapeManager().getCape(entitylivingbaseIn.getName()) != null)
+		if (entitylivingbaseIn.hasPlayerInfo() && !entitylivingbaseIn.isInvisible() && Client.getInstance().getDataManager().getCapesData().has(entitylivingbaseIn.getName()))
         {
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 			

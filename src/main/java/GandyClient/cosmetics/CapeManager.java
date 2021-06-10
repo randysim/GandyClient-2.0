@@ -19,7 +19,7 @@ public class CapeManager {
 	public CapeManager () {}
 	
 	public void addCape (String playerName, ResourceLocation capeLocation) {
-			this.capeMap.put(playerName.toLowerCase(), capeLocation);
+		this.capeMap.put(playerName.toLowerCase(), capeLocation);
 	}
 	
 	public void addColoredCape (String playerName, int color, ResourceLocation capeLocation) {
