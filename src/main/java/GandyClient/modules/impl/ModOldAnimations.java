@@ -21,6 +21,10 @@ public class ModOldAnimations extends ModDraggable {
 		if (!settings.getSettings().containsKey("BLOCK_HIT")) {
 			settings.updateSetting("BLOCK_HIT", 0);
 		}
+		
+		if (!settings.getSettings().containsKey("EATING_DRINKING")) {
+			settings.updateSetting("EATING_DRINKING", 0);
+		}
 	}
 	
 	@Override

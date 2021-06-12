@@ -2,6 +2,7 @@ package GandyClient.mixins.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -10,12 +11,28 @@ import GandyClient.Client;
 import GandyClient.events.impl.ClientTickEvent;
 import GandyClient.gui.SplashProgress;
 import GandyClient.utils.ClientLogger;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.multiplayer.PlayerControllerMP;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.WorldSettings;
 
 @Mixin(Minecraft.class)
 public abstract class MinecraftMixin {
+	
+	@Shadow private PlayerControllerMP playerController;
+	@Shadow private int rightClickDelayTimer;
+	@Shadow EntityPlayerSP thePlayer;
+	@Shadow private MovingObjectPosition objectMouseOver;
+	@Shadow private WorldClient theWorld;
+	@Shadow private EntityRenderer entityRenderer;
+	@Shadow private int leftClickCounter;
 	
 	@Inject(method = "startGame", at = @At("HEAD"))
     private void init(CallbackInfo info) {
@@ -55,6 +72,46 @@ public abstract class MinecraftMixin {
     @Inject(method = "launchIntegratedServer", at = @At("RETURN"))
     private void singlePlayerRP (String folderName, String worldName, WorldSettings worldSettingsIn, CallbackInfo info) {
     	Client.getInstance().getRichPresence().update("Singleplayer World", "In Game");
+    }
+    
+    @SuppressWarnings("incomplete-switch")
+	@Inject(method = "rightClickMouse", at = @At("HEAD"))
+    private void rightClickMouse(CallbackInfo info)
+    {
+    	if (this.playerController.getIsHittingBlock() && this.objectMouseOver != null) {
+    		this.rightClickDelayTimer = 4;
+            ItemStack itemstack = this.thePlayer.inventory.getCurrentItem();
+    		switch (this.objectMouseOver.typeOfHit) {
+    			case BLOCK:
+    				BlockPos blockpos = this.objectMouseOver.getBlockPos();
+    				if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air) {
+    					if (this.playerController.onPlayerRightClick(this.thePlayer, this.theWorld, itemstack, blockpos, this.objectMouseOver.sideHit, this.objectMouseOver.hitVec))
+                        {
+                            this.thePlayer.swingItem();
+                        }
+    				}
+    				break;
+    		}
+    	}
+    }
+    
+    @Inject(method = "sendClickBlockToController", at = @At("RETURN"))
+    private void clickMouse (boolean leftClick, CallbackInfo info) {
+    	if (leftClick && this.thePlayer.isUsingItem()) {
+    		if ( 
+    				this.objectMouseOver != null && 
+    				this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK
+    			)
+            {
+                BlockPos blockpos = this.objectMouseOver.getBlockPos();
+
+                if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air)
+                {
+                	// swinging animation not working for some reason
+                    this.thePlayer.swingItem();
+                }
+            }
+    	}
     }
     
 }

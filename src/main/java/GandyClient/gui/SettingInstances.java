@@ -61,7 +61,8 @@ public class SettingInstances {
 		
 		SettingsScreen OldAnimations = new SettingsScreen(0, 0, 1.0, 1.0, "1.7 Animations");
 		OldAnimations.addComponents(
-				new GuiCheckBox("Block Hit", "ModOldAnimations", "BLOCK_HIT")
+				new GuiCheckBox("Block Hit", "ModOldAnimations", "BLOCK_HIT"),
+				new GuiCheckBox("Eating + Drinking", "ModOldAnimations", "EATING_DRINKING")
 		);
 		settings.add(OldAnimations);
 		

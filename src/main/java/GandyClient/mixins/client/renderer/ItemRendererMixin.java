@@ -209,13 +209,20 @@ public abstract class ItemRendererMixin {
                     case 2:
                     case 3:
                     	performDrinking(entityplayersp, partialTicks);
-                        this.transformFirstPersonItem(f, 0.0F);
+                    	if (
+            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
+            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
+            	        ) {
+                    		this.transformFirstPersonItem(0.2F, f1);
+                    	} else {
+                    		this.transformFirstPersonItem(f, 0.0F);
+                    	}
                         break;
 
                     case 4:
                     	if (
             	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "ENABLED") == 1 &&
-            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "BLOCK_HIT") == 1
+            	        		SettingsManager.getInstance().getSettingValue("ModOldAnimations", "EATING_DRINKING") == 1
             	        ) {
                     		this.transformFirstPersonItem(0.2F, f1);
                     	} else {
