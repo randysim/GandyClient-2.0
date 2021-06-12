@@ -12,8 +12,8 @@ import net.minecraft.client.network.NetHandlerPlayClient;
 
 @Mixin(PlayerControllerMP.class)
 public abstract class PlayerControllerMPMixin {
-	@Inject(method = "init", at=@At("HEAD"))
-	private void setClientHandler (Minecraft mcIn, NetHandlerPlayClient handler, CallbackInfo info) {
-		Client.getInstance().setClientHandler(handler);
+	@Inject(method = "<init>", at=@At("RETURN"))
+	private void setClientHandler (Minecraft mcIn, NetHandlerPlayClient netHandler, CallbackInfo info) {
+		Client.getInstance().setClientHandler(netHandler);
 	}
 }

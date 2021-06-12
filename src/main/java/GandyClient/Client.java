@@ -80,8 +80,8 @@ public class Client {
 		return capeManager;
 	}
 	
-	public void setClientHandler (NetHandlerPlayClient handler) {
-		handler = handler;
+	public void setClientHandler (NetHandlerPlayClient netHandler) {
+		handler = netHandler;
 	}
 	
 	public NetHandlerPlayClient getClientHandler () {

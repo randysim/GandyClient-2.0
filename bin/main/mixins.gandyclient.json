@@ -14,6 +14,7 @@
 	"client.gui.GuiButtonMixin",
 	"client.gui.GuiScreenMixin",
 	"client.multiplayer.GuiConnectingMixin",
+	"client.multiplayer.PlayerControllerMPMixin",
 	"client.renderer.EntityRendererMixin",
 	"client.renderer.IEntityRendererMixin",
 	"client.renderer.ItemRendererMixin",

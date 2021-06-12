@@ -90,6 +90,8 @@ public abstract class MinecraftMixin {
     				BlockPos blockpos = this.objectMouseOver.getBlockPos();
     				if (
     						this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air &&
+    						itemstack != null &&
+    						itemstack.getItem() != null &&
     						itemstack.getItem() instanceof ItemBlock
     				) {
     						Vec3 hitVec = this.objectMouseOver.hitVec;
