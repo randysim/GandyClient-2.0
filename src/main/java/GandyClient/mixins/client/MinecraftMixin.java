@@ -94,13 +94,7 @@ public abstract class MinecraftMixin {
     						itemstack.getItem() != null &&
     						itemstack.getItem() instanceof ItemBlock
     				) {
-    						Vec3 hitVec = this.objectMouseOver.hitVec;
-    						EnumFacing side = this.objectMouseOver.sideHit;
-    						BlockPos hitPos = blockpos;
-    						float f = (float)(hitVec.xCoord - (double)hitPos.getX());
-    			        	float f1 = (float)(hitVec.yCoord - (double)hitPos.getY());
-    			        	float f2 = (float)(hitVec.zCoord - (double)hitPos.getZ());
-    						Client.getInstance().getClientHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(hitPos, side.getIndex(), this.thePlayer.inventory.getCurrentItem(), f, f1, f2));
+    						this.playerController.onPlayerRightClick(this.thePlayer, this.theWorld, itemstack, blockpos, this.objectMouseOver.sideHit, this.objectMouseOver.hitVec);
                             this.thePlayer.swingItem();
     				}
     				break;
