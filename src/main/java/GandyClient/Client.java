@@ -14,6 +14,7 @@ import GandyClient.modules.impl.togglesprintsneak.ToggleSprintListener;
 import GandyClient.utils.Keybinds;
 import GandyClient.utils.Multithreading;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.NetHandlerPlayClient;
 
 public class Client {
 	private static final Client INSTANCE = new Client();
@@ -26,6 +27,8 @@ public class Client {
 	private ModuleManager modManager;
 	private DataManager dataManager;
 	private CapeManager capeManager;
+	
+	private NetHandlerPlayClient handler;
 	
 	private AutoGGListener ggListener = new AutoGGListener();
 	private ToggleSprintListener sprintListener = new ToggleSprintListener();
@@ -75,6 +78,14 @@ public class Client {
 	
 	public CapeManager getCapeManager () {
 		return capeManager;
+	}
+	
+	public void setClientHandler (NetHandlerPlayClient handler) {
+		handler = handler;
+	}
+	
+	public NetHandlerPlayClient getClientHandler () {
+		return handler;
 	}
 	
 	@EventTarget

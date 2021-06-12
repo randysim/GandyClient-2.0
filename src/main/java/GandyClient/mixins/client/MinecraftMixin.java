@@ -18,9 +18,13 @@ import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.WorldSettings;
 
 @Mixin(Minecraft.class)
@@ -79,11 +83,22 @@ public abstract class MinecraftMixin {
     private void rightClickMouse(CallbackInfo info)
     {
     	if (this.playerController.getIsHittingBlock() && this.objectMouseOver != null) {
+    		ItemStack itemstack = this.thePlayer.inventory.getCurrentItem();
     		this.rightClickDelayTimer = 4;
     		switch (this.objectMouseOver.typeOfHit) {
     			case BLOCK:
     				BlockPos blockpos = this.objectMouseOver.getBlockPos();
-    				if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air) {
+    				if (
+    						this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air &&
+    						itemstack.getItem() instanceof ItemBlock
+    				) {
+    						Vec3 hitVec = this.objectMouseOver.hitVec;
+    						EnumFacing side = this.objectMouseOver.sideHit;
+    						BlockPos hitPos = blockpos;
+    						float f = (float)(hitVec.xCoord - (double)hitPos.getX());
+    			        	float f1 = (float)(hitVec.yCoord - (double)hitPos.getY());
+    			        	float f2 = (float)(hitVec.zCoord - (double)hitPos.getZ());
+    						Client.getInstance().getClientHandler().addToSendQueue(new C08PacketPlayerBlockPlacement(hitPos, side.getIndex(), this.thePlayer.inventory.getCurrentItem(), f, f1, f2));
                             this.thePlayer.swingItem();
     				}
     				break;
