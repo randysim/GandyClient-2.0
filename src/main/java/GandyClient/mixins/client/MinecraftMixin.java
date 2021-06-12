@@ -75,27 +75,25 @@ public abstract class MinecraftMixin {
     }
     
     @SuppressWarnings("incomplete-switch")
-	@Inject(method = "rightClickMouse", at = @At("HEAD"))
+	@Inject(method = "rightClickMouse", at = @At("HEAD"), cancellable = true)
     private void rightClickMouse(CallbackInfo info)
     {
     	if (this.playerController.getIsHittingBlock() && this.objectMouseOver != null) {
     		this.rightClickDelayTimer = 4;
-            ItemStack itemstack = this.thePlayer.inventory.getCurrentItem();
     		switch (this.objectMouseOver.typeOfHit) {
     			case BLOCK:
     				BlockPos blockpos = this.objectMouseOver.getBlockPos();
     				if (this.theWorld.getBlockState(blockpos).getBlock().getMaterial() != Material.air) {
-    					if (this.playerController.onPlayerRightClick(this.thePlayer, this.theWorld, itemstack, blockpos, this.objectMouseOver.sideHit, this.objectMouseOver.hitVec))
-                        {
                             this.thePlayer.swingItem();
-                        }
     				}
     				break;
     		}
+    		
+    		info.cancel();
     	}
     }
     
-    @Inject(method = "sendClickBlockToController", at = @At("RETURN"))
+    @Inject(method = "sendClickBlockToController", at = @At("RETURN"), cancellable = true)
     private void clickMouse (boolean leftClick, CallbackInfo info) {
     	if (leftClick && this.thePlayer.isUsingItem()) {
     		if ( 
@@ -111,6 +109,8 @@ public abstract class MinecraftMixin {
                     this.thePlayer.swingItem();
                 }
             }
+    		
+    		info.cancel();
     	}
     }
     
