@@ -1,20 +1,27 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven {
-            name = "forge"
-            url = "https://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = 'sponge'
-            url = 'https://repo.spongepowered.org/maven'
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
-        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
-    }
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle.tweaker-client' version '581a86dcbe'
+    id 'org.spongepowered.mixin' version '0.6-SNAPSHOT'
+    id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+sourceCompatibility = targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+version = "0.1.0"
+group = "gandyclient"
+archivesBaseName = "GandyClient"
+
+def mixin_config = "mixins.gandyclient.json"
+def tweaker = "GandyClient.launch.GandyClientTweaker"
+
+minecraft {
+    version = "1.8.9"
+    tweakClass = tweaker
+    mappings = "stable_22"
+    runDir = 'run'
+    clientJvmArgs = ["-XX:-DisableExplicitGC"]
+    makeObfSourceJar = false
 }
 
 configurations {
@@ -22,50 +29,47 @@ configurations {
     compile.extendsFrom(embed)
 }
 
-apply plugin: 'net.minecraftforge.gradle.tweaker-client'
-apply plugin: 'org.spongepowered.mixin'
-
-
-sourceCompatibility = targetCompatibility = 1.8
-compileJava.options.encoding = 'UTF-8'
-
-version = "1.0.0"
-group = "gandyclient"
-archivesBaseName = "GandyClient"
-
-minecraft {
-    version = "1.8.9"
-    tweakClass = "GandyClient.launch.GandyClientTweaker"
-    mappings = "stable_22"
-    runDir = 'run'
-    clientJvmArgs = ["-XX:-DisableExplicitGC"]
-    makeObfSourceJar = false
+repositories {
+    maven {
+        name "jitpack"
+        url "https://jitpack.io"
+    }
+    maven {
+        name "spongepowered"
+        url "https://repo.spongepowered.org/maven/"
+    }
+    maven {
+        name = 'minecraft'
+        url = 'https://libraries.minecraft.net/'
+    }
+    jcenter()
+    mavenCentral()
 }
 
 dependencies {
-
     embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
         exclude module: 'launchwrapper'
         exclude module: 'guava'
         exclude module: 'gson'
         exclude module: 'commons-io'
     }
+    annotationProcessor 'com.google.guava:guava:21.0'
+    annotationProcessor 'org.apache.logging.log4j:log4j-core:2.0-beta9'
+    annotationProcessor 'org.ow2.asm:asm-tree:6.2'
+    annotationProcessor 'org.ow2.asm:asm-commons:6.2'
+    annotationProcessor 'org.ow2.asm:asm-util:6.2'
+    annotationProcessor 'com.google.code.gson:gson:2.2.4'
+    annotationProcessor 'org.spongepowered:mixin:0.7.11-SNAPSHOT'
 
-    embed fileTree(dir: 'libs', include: '*.jar')
+    embed 'org.slick2d:slick2d-core:1.0.2'
+    embed('com.github.jagrosh:DiscordIPC:e29d6d8') {
+        exclude module: 'log4j'
+    }
 }
 
 mixin {
     defaultObfuscationEnv notch
-    add sourceSets.main, "mixin.gandyclient.refmap.json"
-}
-
-repositories {
-    maven {
-        name = 'sponge'
-        url = 'https://repo.spongepowered.org/maven/'
-    }
-    mavenCentral()
-    jcenter()
+    add sourceSets.main, "mixins.gandyclient.refmap.json"
 }
 
 processResources {
@@ -79,30 +83,16 @@ processResources {
 
 jar {
     dependsOn configurations.compile
-    from {
-        configurations.embed.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
-    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
-}
-
-jar {
     manifest.attributes(
-            "MixinConfigs": 'mixins.gandyclient.json',
-            "TweakClass": 'GandyClient.launch.GandyClientTweaker',
+            "MixinConfigs": mixin_config,
+            "TweakClass": tweaker,
             "TweakOrder": 0,
             "Manifest-Version": 1.0
     )
-
-    configurations.embed.each { dep ->
+    configurations.embed.each(({ dep ->
         from(project.zipTree(dep)) {
-            exclude 'META-INF', 'META-INF/**'
-            exclude 'org/jetbrains/annotations', 'org/jetbrains/annotations/**'
+            //exclude 'META-INF', 'META-INF/**'
+            exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
         }
-    }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.3'
+    }))
 }

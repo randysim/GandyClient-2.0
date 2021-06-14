@@ -1,13 +1,13 @@
 package GandyClient.mixins.client.renderer.entity.layers;
 
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-import GandyClient.Client;
-import GandyClient.modules.SettingsManager;
-import GandyClient.utils.CapeUtils;
-import net.minecraft.client.Minecraft;
+import GandyClient.core.Client;
+import GandyClient.core.modules.SettingsManager;
+import GandyClient.core.utils.CapeUtils;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -17,14 +17,18 @@ import net.minecraft.util.MathHelper;
 
 @Mixin(LayerCape.class)
 public abstract class LayerCapeMixin {
-	@Shadow 
+
+    @Shadow @Final
 	private RenderPlayer playerRenderer;
 	
-	@Overwrite
+	/**
+     * @author Gandy
+     */
+    @Overwrite
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale) {
 		String username = entitylivingbaseIn.getName();
 		
-		if (entitylivingbaseIn.hasPlayerInfo() && !entitylivingbaseIn.isInvisible() && Client.getInstance().getDataManager().getCapesData().has(username))
+		if (entitylivingbaseIn.hasPlayerInfo() && !entitylivingbaseIn.isInvisible() && Client.INSTANCE.getDataManager().getCapesData().has(username))
         {
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 			
@@ -39,11 +43,11 @@ public abstract class LayerCapeMixin {
 			) {
 				ItemArmor chestplate = (ItemArmor) entitylivingbaseIn.getCurrentArmor(slot).getItem();
 				int color = chestplate.getColor(entitylivingbaseIn.getCurrentArmor(slot));
-				if (Client.getInstance().getCapeManager().getColoredCape(username, color) == null) CapeUtils.downloadCape(entitylivingbaseIn, color);
-				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getColoredCape(username, color));
+				if (Client.INSTANCE.getCapeManager().getColoredCape(username, color) == null) CapeUtils.downloadCape(entitylivingbaseIn, color);
+				this.playerRenderer.bindTexture(Client.INSTANCE.getCapeManager().getColoredCape(username, color));
 			} else {
-				if (Client.getInstance().getCapeManager().getCape(username) == null) CapeUtils.downloadCape(entitylivingbaseIn, 0);
-				this.playerRenderer.bindTexture(Client.getInstance().getCapeManager().getCape(username));
+				if (Client.INSTANCE.getCapeManager().getCape(username) == null) CapeUtils.downloadCape(entitylivingbaseIn, 0);
+				this.playerRenderer.bindTexture(Client.INSTANCE.getCapeManager().getCape(username));
 			}
 			
             GlStateManager.pushMatrix();

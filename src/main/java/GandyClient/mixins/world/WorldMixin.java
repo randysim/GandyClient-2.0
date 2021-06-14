@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 import GandyClient.Constants;
-import GandyClient.modules.SettingsManager;
+import GandyClient.core.modules.SettingsManager;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 

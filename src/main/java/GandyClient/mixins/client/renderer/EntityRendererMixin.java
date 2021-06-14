@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import GandyClient.events.impl.DrawBlockOutlineEvent;
 import GandyClient.events.impl.RenderEvent;
-import GandyClient.modules.ModInstances;
+import GandyClient.core.modules.ModInstances;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.state.IBlockState;

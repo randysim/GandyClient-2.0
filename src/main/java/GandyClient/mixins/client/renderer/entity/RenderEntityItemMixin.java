@@ -5,8 +5,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import GandyClient.modules.SettingsManager;
-import GandyClient.modules.impl.itemphysics.ClientPhysic;
+import GandyClient.core.modules.SettingsManager;
+import GandyClient.core.modules.impl.itemphysics.ClientPhysic;
 import net.minecraft.client.renderer.entity.RenderEntityItem;
 import net.minecraft.entity.item.EntityItem;
 

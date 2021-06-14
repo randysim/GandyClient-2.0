@@ -2,6 +2,7 @@ package GandyClient.mixins.client.gui;
 
 import java.awt.Color;
 
+import GandyClient.core.discord.DiscordIPC;
 import org.lwjgl.opengl.GL11;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -10,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import GandyClient.Client;
+import GandyClient.core.Client;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -38,8 +39,7 @@ public abstract class GuiMainMenuMixin extends GuiScreenMixin {
 	
 	@Inject(method = "initGui", at = @At("HEAD"))
 	private void init (CallbackInfo info) {
-
-		Client.getInstance().getRichPresence().update("Idle", "Main Menu");
+		DiscordIPC.INSTANCE.update("Idle", "Main Menu");
 	}
 	
 	@Overwrite
@@ -50,9 +50,7 @@ public abstract class GuiMainMenuMixin extends GuiScreenMixin {
 	}
 	
 	@Overwrite
-	public void drawScreen(int mouseX, int mouseY, float partialTicks)
-    {
-    	
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
     	/* MAIN MENU PNG */
     	ScaledResolution scaledRes = new ScaledResolution(this.mc);
     	this.mc.getTextureManager().bindTexture(new ResourceLocation("mainmenu.png"));
@@ -84,7 +82,6 @@ public abstract class GuiMainMenuMixin extends GuiScreenMixin {
             this.drawString(this.fontRendererObj, this.openGLWarning1, this.field_92022_t, this.field_92021_u, -1);
             this.drawString(this.fontRendererObj, this.openGLWarning2, (this.width - this.field_92024_r) / 2, ((GuiButton)this.buttonList.get(0)).yPosition - 12, -1);
         }
-
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 }
