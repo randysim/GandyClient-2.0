@@ -106,7 +106,7 @@ public abstract class MinecraftMixin {
     
     @Inject(method = "sendClickBlockToController", at = @At("RETURN"), cancellable = true)
     private void clickMouse (boolean leftClick, CallbackInfo info) {
-    	if (leftClick && this.thePlayer.isUsingItem()) {
+    	if (leftClick && this.thePlayer.isUsingItem() && this.leftClickCounter <= 0) {
     		if ( 
     				this.objectMouseOver != null && 
     				this.objectMouseOver.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK
