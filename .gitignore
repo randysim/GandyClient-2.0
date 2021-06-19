@@ -5,3 +5,7 @@ build
 patch
 refmap
 versionCache
+bin
+.classpath
+.project
+.settings
