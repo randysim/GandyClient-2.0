@@ -18,7 +18,10 @@ import net.minecraft.launchwrapper.LaunchClassLoader;
 public class GandyClientTweaker implements ITweaker {
 
     private final ArrayList<String> args = new ArrayList<>();
-
+    
+    private boolean isRunningOptifine = Launch.classLoader.getTransformers().stream()
+            .anyMatch(p -> p.getClass().getName().toLowerCase(Locale.ENGLISH).contains("optifine"));
+    
     @Override
     public void acceptOptions(List<String> args, File gameDir, final File assetsDir, String profile) {
         this.args.addAll(args);
@@ -38,7 +41,11 @@ public class GandyClientTweaker implements ITweaker {
 
         MixinEnvironment environment = MixinEnvironment.getDefaultEnvironment();
         Mixins.addConfiguration("mixins.gandyclient.json");
-
+        
+        if (isRunningOptifine) {
+            environment.setObfuscationContext("notch"); // Switch's to notch mappings
+        }
+        
         if (environment.getObfuscationContext() == null) {
             environment.setObfuscationContext("notch"); // Switch's to notch mappings
         }

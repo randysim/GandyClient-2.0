@@ -35,7 +35,7 @@ public class CapeUtils
         	/* 
         	  dev note: HttpsURLConnection
         	  */
-        	JsonObject capesJson = Client.INSTANCE.getDataManager().getCapesData();
+        	JsonObject capesJson = Client.INSTANCE.dataManager.getCapesData();
         	
         	/* SET CAPE URL */
         	if (capesJson.has(username)) {
@@ -60,8 +60,8 @@ public class CapeUtils
             ITextureObject tex = textureManager.getTexture(rl);
 
             if (
-            	(isColor && Client.INSTANCE.getCapeManager().getColoredCape(username, capeColor) != null) ||
-            	(!isColor && Client.INSTANCE.getCapeManager().getCape(username) != null)
+            	(isColor && Client.INSTANCE.capeManager.getColoredCape(username, capeColor) != null) ||
+            	(!isColor && Client.INSTANCE.capeManager.getCape(username) != null)
             )
             {
             	// checks if texture is already stored to prevent loading it again
@@ -84,9 +84,9 @@ public class CapeUtils
                 public void skinAvailable()
                 {		
                 		if (isColor) {
-                			Client.INSTANCE.getCapeManager().addColoredCape(username, capeColor, rl);
+                			Client.INSTANCE.capeManager.addColoredCape(username, capeColor, rl);
                 		} else {
-                			Client.INSTANCE.getCapeManager().addCape(username, rl);
+                			Client.INSTANCE.capeManager.addCape(username, rl);
                 		}
                 }
 
@@ -94,9 +94,9 @@ public class CapeUtils
             ThreadDownloadImageData textureCape = new ThreadDownloadImageData((File)null, ofCapeUrl, (ResourceLocation)null, iib);
             
     		if (isColor) {
-    			Client.INSTANCE.getCapeManager().addColoredCape(username, capeColor, rl);
+    			Client.INSTANCE.capeManager.addColoredCape(username, capeColor, rl);
     		} else {
-    			Client.INSTANCE.getCapeManager().addCape(username, rl);
+    			Client.INSTANCE.capeManager.addCape(username, rl);
     		}
     		
             textureManager.loadTexture(rl, textureCape);

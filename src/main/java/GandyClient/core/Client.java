@@ -30,9 +30,9 @@ public class Client {
 	private HUDManager hudManager;
 	private ModuleManager modManager;
 	@Getter
-	private DataManager dataManager;
+	public DataManager dataManager;
 	@Getter
-	private CapeManager capeManager;
+	public CapeManager capeManager;
 	
 	private NetHandlerPlayClient handler;
 	
@@ -95,5 +95,4 @@ public class Client {
 	public static void error (Object msg, Object... params) {
 		LOGGER.error(String.valueOf(msg), params);
 	}
-
 }

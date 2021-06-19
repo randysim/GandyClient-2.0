@@ -2,7 +2,7 @@
   "required": true,
   "compatibilityLevel": "JAVA_8",
   "package": "GandyClient.mixins",
-  "refmap": "mixin.gandyclient.refmap.json",
+  "refmap": "mixins.gandyclient.refmap.json",
   "verbose": true,
   "mixins": [
 	"world.WorldMixin",

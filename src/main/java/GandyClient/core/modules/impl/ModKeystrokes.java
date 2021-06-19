@@ -152,21 +152,21 @@ public class ModKeystrokes extends ModDraggable {
 			scaleFactor = 1.33;
 			break;
 		}
-		GlStateManager.pushMatrix();
+		GL11.glPushMatrix();
 
 		if (settings.getSettings().containsKey("SIZE")) {
 			float floatScale = (float) settings.getSettings().get("SIZE") / (float) Constants.FLOAT_SCALE;
 			scaleFactor *= floatScale;
 		}
 		
-		GlStateManager.scale(scaleFactor, scaleFactor, 1.0F);
+		GL11.glScaled(scaleFactor, scaleFactor, 1.0F);
 		// divide everything by scaleFactor after scaling up scaleFactor so coords become correct
 		for (Key key : mode.getKeys()) {
 			int textWidth = Minecraft.getMinecraft().fontRendererObj.getStringWidth(key.getName());
-			int x = (int) (pos.getAbsoluteX() / scaleFactor + key.getX());
-			int y = (int) (pos.getAbsoluteX() / scaleFactor) + key.getX();
+			int x = (int) (pos.getAbsoluteX() / scaleFactor) + key.getX();
+			int y = (int) (pos.getAbsoluteY() / scaleFactor) + key.getY();
 			Gui.drawRect(x, y, x + key.getWidth(), y + key.getHeight(), key.isDown() ? new Color(255, 255, 255, 102).getRGB() : new Color(0, 0, 0, 102).getRGB());
-			Minecraft.getMinecraft().fontRendererObj.drawString(key.getName(), x + key.getWidth() / 2 - textWidth / 2, y + key.getHeight() / 2 - 4, key.isDown() ? Color.BLACK.getRGB() : Color.white.getRGB());
+			Minecraft.getMinecraft().fontRendererObj.drawString(key.getName(), x + (key.getWidth() / 2) - (textWidth / 2), y + (key.getHeight() / 2) - (Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2), key.isDown() ? Color.BLACK.getRGB() : Color.white.getRGB());
 		}
 		GL11.glPopMatrix();
 	}
