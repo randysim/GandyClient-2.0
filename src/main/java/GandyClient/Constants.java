@@ -1,7 +1,7 @@
 package GandyClient;
 
 public class Constants {
-	public static final String CAPES_DATA_URL = "https://api.npoint.io/e3b70f38f7ad31e4c3ac";
+	public static final String CAPES_DATA_URL = "https://gandyt.github.io/api/gandyclient/capes.json";
 	public static final String YOUTUBER_DATA_URL = "https://api.npoint.io/a4591f8ee19a166d2ea3";
 	
 	/* MODMENU */
