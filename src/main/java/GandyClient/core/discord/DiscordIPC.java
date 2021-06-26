@@ -14,6 +14,7 @@ public class DiscordIPC implements IPCListener {
 
     public static final DiscordIPC INSTANCE = new DiscordIPC();
     private IPCClient client;
+    private boolean hasClient = true;
 
     public void init() {
         client = new IPCClient(835268116057555016L);
@@ -22,24 +23,31 @@ public class DiscordIPC implements IPCListener {
             client.connect();
         } catch (NoDiscordClientException e) {
             e.printStackTrace();
+            hasClient = false;
+            return;
+            
         } catch (Exception e) {
             Client.error("UNKOWN ERROR");
             e.printStackTrace();
+            hasClient = false;
+            return;
         }
         Client.info("IPC {} -> {}", client.getStatus(), client.getDiscordBuild());
     }
 
     public void update(String state, String details) {
-        RichPresence.Builder builder = new RichPresence.Builder()
+    	if (hasClient) {
+    		RichPresence.Builder builder = new RichPresence.Builder()
                 .setState(state)
                 .setDetails(details)
                 .setLargeImage("background", "Gandy Client")
                 .setStartTimestamp(OffsetDateTime.now());
-        client.sendRichPresence(builder.build());
+    		client.sendRichPresence(builder.build());
+    	}
     }
 
     public void shutdown() {
-        if (client != null && client.getStatus() == PipeStatus.CONNECTED) {
+        if (client != null && hasClient && client.getStatus() == PipeStatus.CONNECTED) {
             client.close();
             Client.info("Discord IPC closed!");
         }
